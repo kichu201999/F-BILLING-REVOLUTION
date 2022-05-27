@@ -7146,6 +7146,12 @@ def mainpage():
     lbl01.place_forget()
     memaiframe.delete("1.0",END)
     if paym == "Purchase Order E-Mail Template":
+    #   email_str11 = StringVar() 
+    #   email_lbx11 = Entry(eighttab,width=30,textvariable=email_str10,state='readonly',justify='center',background='white')
+    #   email_lbx11.place(x=1090,y=46)
+    #   email_str11.set("{{Company_Name}}")
+
+   
       lb1 = Label(eighttab,text='Purchase Order E-Mail Template',font="TimesNewRoman 12 ")
       lb1.place(x=2,y=20)
       lbx = Listbox(eighttab,  height=29, width=34)
@@ -7180,6 +7186,11 @@ def mainpage():
     elif paym == "Invoice E-Mail Template":
       lb3 = Label(eighttab,text='Invoice E-Mail Template',font="TimesNewRoman 12 ")
       lb3.place(x=2,y=20)
+    #   email_lbx1.insert(END, "{{Company_Name}}")
+    #   email_lbx2.insert(END, "{{Company_Address}}")
+    #   email_lbx3.insert(END, "{{Invoice_Number}}" )
+      
+      
       lbx = Listbox(eighttab,  height=29, width=34)
       lbx.insert(END, "{{Company_Name}}")
       lbx.insert(END, "{{Company_Address}}")
@@ -7298,6 +7309,12 @@ def mainpage():
     memaiframe.tag_config('center',justify=CENTER)
     memaiframe.delete(0.0,END)
     memaiframe.insert(INSERT,data,'center')
+
+  # def undo(self, *args):
+  #   self.text_undo()
+
+  # def redo(self, *args):
+  #   self.memaiframe.redo()
   
   # url=''
   # def open_file(): 
@@ -7351,7 +7368,7 @@ def mainpage():
 
   scrollbar = Scrollbar(eighttab)
   scrollbar.place(x=1048, y=120, height=395)
-  memaiframe=Text(emailmessage_Frame,yscrollcommand=scrollbar.set,font=('arial',12))
+  memaiframe=Text(emailmessage_Frame,yscrollcommand=scrollbar.set,font=('arial',12),undo=True)
   memaiframe.pack(fill=BOTH,pady=28,expand=True)
   scrollbar.config(command=memaiframe.yview)
 
@@ -7372,10 +7389,10 @@ def mainpage():
   btn4=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=paste,command=lambda :memaiframe.event_generate('<Control v>'))
   btn4.place(x=105, y=1)
 
-  btn5=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=undo,command=lambda :memaiframe.event_generate('<Control Shift z>'))
+  btn5=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=undo)
   btn5.place(x=140, y=1)
 
-  btn6=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=redo,command=lambda :memaiframe.event_generate('<Control y>'))
+  btn6=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=redo)
   btn6.place(x=175, y=1)
 
   btn7=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=bold,command=bold_text)
@@ -7443,6 +7460,8 @@ def mainpage():
 
   attachlbframe=LabelFrame(eighttab,text="placeholders(drag or double click to insert", height=500, width=233)
   attachlbframe.place(x=1080, y=22)
+  label_po = Label(eighttab,text="{{Company_Name}}",font="TimesNewRoman 12 ")
+  label_po.place(x=1090,y=46)
   lbx01 = Listbox(eighttab,  height=28, width=34)
   lbx01.insert(END, "{{Company_Name}}")
   lbx01.insert(END, "{{Company_Address}}")
@@ -7455,86 +7474,110 @@ def mainpage():
   lbx01.insert(END, "{{Purchase_Order_Total}}")
   lbx01.insert(END, "{{Current_date}}")
   lbx01.place(x=1090, y=46)
-  # paymant_str1 = StringVar() 
-  # payment_lbx1 = Entry(tentab,width=30,textvariable=pord_str5)
+  # email_str1 = StringVar() 
+  # payment_lbx1 = Entry(eighttab,width=30,textvariable=email_str1,state='readonly',justify='center')
   # payment_lbx1.place(x=1090,y=46)
-  # if not podata:
-  #   payment_str1.set('{{Company_Name}}')
-  # else:
-  #   payment_lbx1.insert(0, podata[50])
+  # # if not podata:
+  # email_str1.set("{{Company_Name}}")
+  # # else:
+  #   # pass
+  #   # payment_lbx1.insert(0, podata[50])
 
-  # paymant_str2 = StringVar() 
-  # payment_lbx2 = Entry(tentab,width=30,textvariable=pord_str5)
-  # payment_lbx2.place(x=1090,y=48)
-  # if not podata:
-  #   payment_str2.set('{{Company_Address}}')
-  # else:
-  #   payment_lbx2.insert(0, podata[50])
+  # email_str2 = StringVar() 
+  # payment_lbx2 = Entry(eighttab,width=30,textvariable=email_str2,state='readonly',justify='center')
+  # payment_lbx2.place(x=1090,y=66)
+  # # if not podata:
+  # email_str2.set("{{Company_Address}}")
+  # # else:
+  # #   payment_lbx2.insert(0, podata[50])
 
-  # paymant_str3 = StringVar() 
-  # payment_lbx3 = Entry(tentab,width=30,textvariable=pord_str5)
-  # payment_lbx3.place(x=1090,y=50)
-  # if not podata:
-  #   payment_str3.set('{{Company_Email1}}')
-  # else:
-  #   payment_lbx3.insert(0, podata[50])
+  # email_str3 = StringVar() 
+  # payment_lbx3 = Entry(eighttab,width=30,textvariable=email_str3,state='readonly',justify='center')
+  # payment_lbx3.place(x=1090,y=86)
+  # # if not podata:
+  # email_str3.set("{{Company_Email1}}")
+  # # else:
+  # #   payment_lbx3.insert(0, podata[50])
 
-  # paymant_str4 = StringVar() 
-  # payment_lbx4 = Entry(tentab,width=30,textvariable=pord_str5)
-  # payment_lbx4.place(x=1090,y=52)
-  # if not podata:
-  #   payment_str4.set('{{Customer_Name}}')
-  # else:
-  #   payment_lbx4.insert(0, podata[50])  
+  # email_str4 = StringVar() 
+  # payment_lbx4 = Entry(eighttab,width=30,textvariable=email_str4,state='readonly',justify='center')
+  # payment_lbx4.place(x=1090,y=106)
+  # # if not podata:
+  # email_str4.set("{{Customer_Name}}")
+  # # else:
+  # #   payment_lbx4.insert(0, podata[50])  
 
-  # paymant_str5 = StringVar() 
-  # payment_lbx5 = Entry(tentab,width=30,textvariable=pord_str5)
-  # payment_lbx5.place(x=1090,y=54)
-  # if not podata:
-  #   payment_str5.set('{{Customer_Address}}')
-  # else:
-  #   payment_lbx5.insert(0, podata[50])
+  # email_str5 = StringVar() 
+  # payment_lbx5 = Entry(eighttab,width=30,textvariable=email_str5,state='readonly',justify='center')
+  # payment_lbx5.place(x=1090,y=126)
+  # # if not podata:
+  # email_str5.set("{{Customer_Address}}")
+  # # else:
+  # #   payment_lbx5.insert(0, podata[50])
 
-  # paymant_str6 = StringVar() 
-  # payment_lbx6 = Entry(tentab,width=30,textvariable=pord_str5)
-  # payment_lbx6.place(x=1090,y=56)
-  # if not podata:
-  #   payment_str6.set('{{Customer_Email}}')
-  # else:
-  #   payment_lbx6.insert(0, podata[50])
+  # email_str6 = StringVar() 
+  # payment_lbx6 = Entry(eighttab,width=30,textvariable=email_str6,state='readonly',justify='center')
+  # payment_lbx6.place(x=1090,y=146)
+  # # if not podata:
+  # email_str6.set("{{Customer_Email}}")
+  # # else:
+  # #   payment_lbx6.insert(0, podata[50])
 
-  # paymant_str7 = StringVar() 
-  # payment_lbx7 = Entry(tentab,width=30,textvariable=pord_str5)
-  # payment_lbx7.place(x=1090,y=58)
-  # if not podata:
-  #   payment_str7.set('{{Purchase_Order_Number}}')
-  # else:
-  #   payment_lbx7.insert(0, podata[50])
+  # email_str7 = StringVar() 
+  # payment_lbx7 = Entry(eighttab,width=30,textvariable=email_str7,state='readonly',justify='center')
+  # payment_lbx7.place(x=1090,y=166)
+  # # if not podata:
+  # email_str7.set("{{Purchase_Order_Number}}")
+  # # else:
+  # #   payment_lbx7.insert(0, podata[50])
 
-  # paymant_str8 = StringVar() 
-  # payment_lbx8 = Entry(tentab,width=30,textvariable=pord_str5)
-  # payment_lbx8.place(x=1090,y=60)
-  # if not podata:
-  #   payment_str8.set('{{Purchase_Order_Date}}')
-  # else:
-  #   payment_lbx8.insert(0, podata[50])
+  # email_str8 = StringVar() 
+  # payment_lbx8 = Entry(eighttab,width=30,textvariable=email_str8,state='readonly',justify='center')
+  # payment_lbx8.place(x=1090,y=186)
+  # # if not podata:
+  # email_str8.set("{{Purchase_Order_Date}}")
+  # # else:
+  #   # email_str8.insert(0, podata[50])
 
-  # paymant_str9 = StringVar() 
-  # payment_lbx9 = Entry(tentab,width=30,textvariable=pord_str5)
-  # payment_lbx9.place(x=1090,y=62)
-  # if not podata:
-  #   payment_str9.set('{{Purchase_Order_Total}}')
-  # else:
-  #   payment_lbx9.insert(0, podata[50])
+  # email_str9 = StringVar() 
+  # payment_lbx9 = Entry(eighttab,width=30,textvariable=email_str9,state='readonly',justify='center')
+  # payment_lbx9.place(x=1090,y=206)
+  # # if not podata:
+  # email_str9.set("{{Purchase_Order_Total}}")
+  # # else:
+  # #   payment_lbx9.insert(0, podata[50])
 
-  # paymant_str10 = StringVar() 
-  # payment_lbx10 = Entry(tentab,width=30,textvariable=pord_str5)
-  # payment_lbx10.place(x=1090,y=46)
-  # if not podata:
-  #   payment_str10.set('{{Current_date}}')
-  # else:
-  #   payment_lbx10.insert(0, podata[50])
+  # email_str10 = StringVar() 
+  # payment_lbx10 = Entry(eighttab,width=30,textvariable=email_str10,state='readonly',justify='center',background='white')
+  # payment_lbx10.place(x=1090,y=226)
+  # # if not podata:
+  # email_str10.set("{{Current_date}}")
+  # # else:
+  # #   payment_lbx10.insert(0, podata[50])
     
+  # def get_value():
+  #   e_text=payment_lbx1.get()
+  #   e_text=payment_lbx2.get()
+  #   e_text=payment_lbx3.get()
+  #   e_text=payment_lbx4.get()
+  #   e_text=payment_lbx5.get()
+  #   e_text=payment_lbx6.get()
+  #   # e_text=
+  #   # e_text=
+  #   # e_text=
+  #   # e_text=
+  def select():
+    mylabel.config(text=lbx01.get(ANCHOR))
+
+  global mylabel
+  mylabel=Label(eighttab,text="")
+  mylabel.place(x=8,y=120)
+    # memaiframe=Text(emailmessage_Frame,yscrollcommand=scrollbar.set,font=('arial',12),value=e_text)
+    # memaiframe.pack(fill=BOTH,pady=28,expand=True)
+
+  ebutton =Button(eighttab,text='enter',command=select)
+  ebutton.place(x=900,y=20)
+     
 
 
   # def myfunction():
