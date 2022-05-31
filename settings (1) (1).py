@@ -38,7 +38,7 @@ import json
 from tkinter import font,colorchooser
 
 fbilldb = mysql.connector.connect(
-    host="localhost", user="root", password="", database="fbillingsintgrtd5", port="3306"
+    host="localhost", user="root", password="", database="fbillingsintgrtd5(3)", port="3306"
 )
 fbcursor = fbilldb.cursor()
 
@@ -322,7 +322,7 @@ def mainpage():
     adv_default = adv_win_menu8.get()
     pord_prefix = prefix_str.get()
     pord_spin = spin2.get()
-    pord_header = win_menu.get()
+    pord_header = pwin_menu.get()
     pord_text1 = pord_str1.get()
     pord_text2 = pord_str2.get()
     pord_text3 = pord_str3.get()
@@ -330,8 +330,8 @@ def mainpage():
     pord_text5 = pord_str5.get()
     pord_text6 = pord_str6.get()
     pord_text7 = pord_str7.get()
-    pord_predefind = pord_str8.get()
-    combo = em_menu.get()
+    pord_predefind = pord_str8.get(1.0,END)
+   
 
     child = exctree.get_children()
     var = json.dumps(child)
@@ -344,20 +344,20 @@ def mainpage():
     if not i:
       if filename == "":
         print(12)
-        sql = 'insert into company(name, address, email,salestaxno,currency,currencysign,currsignplace,  decimalseperator,excurrency,dateformat,exdate,taxtype,printimageornot,tax1name,tax1rate,printtax1,  tax2name,tax2rate,printtax2,attachment_file_type,miscellanoustab_cbutton1,miscellanoustab_cbutton2,miscellanoustab_cbutton3,miscellanoustab_cbutton4,miscellanoustab_cbutton5,miscellanoustab_cbutton6,Estimate_prefix,Customizeestimatetextlabels,Customizeestimatetextlabels1,Customizeestimatetextlabels2,Customizeestimatetextlabels3,Customizeestimatetextlabels4,Customizeestimatetextlabels5,Defaultestimatetemplate,Startingestimatenumber,Predefinedtextforestimates,adv_Selectedtemplatepreview,est_Headerboxbackgroundcolor,porder_prefix,headrebox_color,starting_porderno,text_label1,text_label2,text_label3,text_label4,text_label5,text_label6,text_label7,predefindterms_porder,email_template) values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
-        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo)
+        sql = 'insert into company(name, address, email,salestaxno,currency,currencysign,currsignplace,  decimalseperator,excurrency,dateformat,exdate,taxtype,printimageornot,tax1name,tax1rate,printtax1,  tax2name,tax2rate,printtax2,attachment_file_type,miscellanoustab_cbutton1,miscellanoustab_cbutton2,miscellanoustab_cbutton3,miscellanoustab_cbutton4,miscellanoustab_cbutton5,miscellanoustab_cbutton6,Estimate_prefix,Customizeestimatetextlabels,Customizeestimatetextlabels1,Customizeestimatetextlabels2,Customizeestimatetextlabels3,Customizeestimatetextlabels4,Customizeestimatetextlabels5,Defaultestimatetemplate,Startingestimatenumber,Predefinedtextforestimates,adv_Selectedtemplatepreview,est_Headerboxbackgroundcolor,porder_prefix,headrebox_color,starting_porderno,text_label1,text_label2,text_label3,text_label4,text_label5,text_label6,text_label7,predefindterms_porder) values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind)
         fbcursor.execute(sql, val)
         fbilldb.commit()
       else:
         shutil.copyfile(filename, os.getcwd()+'/images/'+filename.split('/')[-1])
-        sql = 'insert into company(name, address, email,salestaxno,currency,currencysign,currsignplace,  decimalseperator,excurrency,dateformat,exdate,taxtype,printimageornot,tax1name,tax1rate,printtax1,  tax2name,tax2rate,printtax2,image,attachment_file_type,miscellanoustab_cbutton1,miscellanoustab_cbutton2,miscellanoustab_cbutton3,miscellanoustab_cbutton4,miscellanoustab_cbutton5,miscellanoustab_cbutton6,Estimate_prefix,Customizeestimatetextlabels,Customizeestimatetextlabels1,Customizeestimatetextlabels2,Customizeestimatetextlabels3,Customizeestimatetextlabels4,Customizeestimatetextlabels5,Defaultestimatetemplate,Startingestimatenumber,Predefinedtextforestimates,adv_Selectedtemplatepreview,est_Headerboxbackgroundcolor,porder_prefix,headrebox_color,starting_porderno,text_label1,text_label2,text_label3,text_label4,text_label5,text_label6,text_label7,predefindterms_porder,email_template) values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
-        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,filename.split('/')[-1],radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo)
+        sql = 'insert into company(name, address, email,salestaxno,currency,currencysign,currsignplace,  decimalseperator,excurrency,dateformat,exdate,taxtype,printimageornot,tax1name,tax1rate,printtax1,  tax2name,tax2rate,printtax2,image,attachment_file_type,miscellanoustab_cbutton1,miscellanoustab_cbutton2,miscellanoustab_cbutton3,miscellanoustab_cbutton4,miscellanoustab_cbutton5,miscellanoustab_cbutton6,Estimate_prefix,Customizeestimatetextlabels,Customizeestimatetextlabels1,Customizeestimatetextlabels2,Customizeestimatetextlabels3,Customizeestimatetextlabels4,Customizeestimatetextlabels5,Defaultestimatetemplate,Startingestimatenumber,Predefinedtextforestimates,adv_Selectedtemplatepreview,est_Headerboxbackgroundcolor,porder_prefix,headrebox_color,starting_porderno,text_label1,text_label2,text_label3,text_label4,text_label5,text_label6,text_label7,predefindterms_porder) values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,filename.split('/')[-1],radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind)
         fbcursor.execute(sql, val)
         fbilldb.commit()
     else:
       if filename == "":
-        sql = "update company set name=%s, address=%s, email=%s,salestaxno=%s,currency=%s,currencysign=%s,  currsignplace=%s,decimalseperator=%s,excurrency=%s,dateformat=%s,exdate=%s,taxtype=%s,  printimageornot=%s,tax1name=%s,tax1rate=%s,printtax1=%s,tax2name=%s,tax2rate=%s,printtax2=%s,attachment_file_type=%s,miscellanoustab_cbutton1=%s,miscellanoustab_cbutton2=%s,miscellanoustab_cbutton3=%s,miscellanoustab_cbutton4=%s,miscellanoustab_cbutton5=%s,miscellanoustab_cbutton6=%s,Estimate_prefix=%s,Customizeestimatetextlabels=%s,Customizeestimatetextlabels1=%s,Customizeestimatetextlabels2=%s,Customizeestimatetextlabels3=%s,Customizeestimatetextlabels4=%s,Customizeestimatetextlabels5=%s,Defaultestimatetemplate=%s,Startingestimatenumber=%s,Predefinedtextforestimates=%s,adv_Selectedtemplatepreview=%s,est_Headerboxbackgroundcolor=%s,porder_prefix=%s,headrebox_color=%s,starting_porderno=%s,text_label1=%s,text_label2=%s,text_label3=%s,text_label4=%s,text_label5=%s,text_label6=%s,text_label7=%s,predefindterms_porder=%s,email_template=%s"
-        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo)
+        sql = "update company set name=%s, address=%s, email=%s,salestaxno=%s,currency=%s,currencysign=%s,  currsignplace=%s,decimalseperator=%s,excurrency=%s,dateformat=%s,exdate=%s,taxtype=%s,  printimageornot=%s,tax1name=%s,tax1rate=%s,printtax1=%s,tax2name=%s,tax2rate=%s,printtax2=%s,attachment_file_type=%s,miscellanoustab_cbutton1=%s,miscellanoustab_cbutton2=%s,miscellanoustab_cbutton3=%s,miscellanoustab_cbutton4=%s,miscellanoustab_cbutton5=%s,miscellanoustab_cbutton6=%s,Estimate_prefix=%s,Customizeestimatetextlabels=%s,Customizeestimatetextlabels1=%s,Customizeestimatetextlabels2=%s,Customizeestimatetextlabels3=%s,Customizeestimatetextlabels4=%s,Customizeestimatetextlabels5=%s,Defaultestimatetemplate=%s,Startingestimatenumber=%s,Predefinedtextforestimates=%s,adv_Selectedtemplatepreview=%s,est_Headerboxbackgroundcolor=%s,porder_prefix=%s,headrebox_color=%s,starting_porderno=%s,text_label1=%s,text_label2=%s,text_label3=%s,text_label4=%s,text_label5=%s,text_label6=%s,text_label7=%s,predefindterms_porder=%s"
+        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind)
         fbcursor.execute(sql, val)
         fbilldb.commit()
       else:
@@ -7132,7 +7132,11 @@ def mainpage():
   eighttab=Frame(eighttab1, bg="#f5f3f2", height=700)
   eighttab.pack(side="top", fill=BOTH)
 
-  sql = "select * from company"
+  def  save_email():
+    combo = em_menu.get()
+    #listbo = list_str.get()
+
+  sql = "select * from email"
   fbcursor.execute(sql)
   emdata = fbcursor.fetchone()
 
@@ -7144,14 +7148,8 @@ def mainpage():
     paym=em_menu.get()
     print(paym)
     lbl01.place_forget()
-    memaiframe.delete("1.0",END)
+    memaiframe.delete("1.0",END) 
     if paym == "Purchase Order E-Mail Template":
-    #   email_str11 = StringVar() 
-    #   email_lbx11 = Entry(eighttab,width=30,textvariable=email_str10,state='readonly',justify='center',background='white')
-    #   email_lbx11.place(x=1090,y=46)
-    #   email_str11.set("{{Company_Name}}")
-
-   
       lb1 = Label(eighttab,text='Purchase Order E-Mail Template',font="TimesNewRoman 12 ")
       lb1.place(x=2,y=20)
       lbx = Listbox(eighttab,  height=29, width=34)
@@ -7166,6 +7164,25 @@ def mainpage():
       lbx.insert(END, "{{Purchase_Order_Total}}")
       lbx.insert(END, "{{Current_date}}")
       lbx.place(x=1090, y=46)
+
+    elif paym == "Estimate E-Mail Template":
+      lb4 = Label(eighttab,text='Estimate E-Mail Template',font="TimesNewRoman 12 ")
+      lb4.place(x=2,y=20)
+      lbx = Listbox(eighttab,  height=29, width=34)
+      lbx.insert(END, "{{Company_Name}}")
+      lbx.insert(END, "{{Company_Address}}")
+      lbx.insert(END, "{{Company_Email1}}")
+      lbx.insert(END, "{{Customer_Name}}")
+      lbx.insert(END, "{{Customer_Address}}")
+      lbx.insert(END, "{{Customer_Email}}")
+      lbx.insert(END, "{{Estimate_Number}}")
+      lbx.insert(END, "{{Estimate_Date}}")  
+      lbx.insert(END, "{{Estimate_Total}}")
+      lbx.insert(END, "{{Estimate_Balance}}")
+      lbx.insert(END, "{{Current_date}}")
+      lbx.place(x=1090, y=46)
+
+    
     elif paym == "Order E-Mail Template":
       lb2 = Label(eighttab,text='Order E-Mail Template',font="TimesNewRoman 12 ")
       lb2.place(x=2,y=20)
@@ -7186,11 +7203,6 @@ def mainpage():
     elif paym == "Invoice E-Mail Template":
       lb3 = Label(eighttab,text='Invoice E-Mail Template',font="TimesNewRoman 12 ")
       lb3.place(x=2,y=20)
-    #   email_lbx1.insert(END, "{{Company_Name}}")
-    #   email_lbx2.insert(END, "{{Company_Address}}")
-    #   email_lbx3.insert(END, "{{Invoice_Number}}" )
-      
-      
       lbx = Listbox(eighttab,  height=29, width=34)
       lbx.insert(END, "{{Company_Name}}")
       lbx.insert(END, "{{Company_Address}}")
@@ -7206,24 +7218,7 @@ def mainpage():
       lbx.insert(END, "{{Invoice_TotalPaid}}")
       lbx.insert(END, "{{Invoice_Balance}}")
       lbx.insert(END, "{{Current_date}}")
-      lbx.place(x=1090, y=46)
-     
-    elif paym == "Estimate E-Mail Template":
-      lb4 = Label(eighttab,text='Estimate E-Mail Template',font="TimesNewRoman 12 ")
-      lb4.place(x=2,y=20)
-      lbx = Listbox(eighttab,  height=29, width=34)
-      lbx.insert(END, "{{Company_Name}}")
-      lbx.insert(END, "{{Company_Address}}")
-      lbx.insert(END, "{{Company_Email1}}")
-      lbx.insert(END, "{{Customer_Name}}")
-      lbx.insert(END, "{{Customer_Address}}")
-      lbx.insert(END, "{{Customer_Email}}")
-      lbx.insert(END, "{{Estimate_Number}}")
-      lbx.insert(END, "{{Estimate_Date}}")  
-      lbx.insert(END, "{{Estimate_Total}}")
-      lbx.insert(END, "{{Estimate_Balance}}")
-      lbx.insert(END, "{{Current_date}}")
-      lbx.place(x=1090, y=46)
+      lbx.place(x=1090, y=46)  
      
     elif paym == "Payment Receipt Template":
       lb5 = Label(eighttab,text='Payment Receipt Template',font="TimesNewRoman 12 ")
@@ -7310,6 +7305,26 @@ def mainpage():
     memaiframe.delete(0.0,END)
     memaiframe.insert(INSERT,data,'center')
 
+  def open():
+    top = Toplevel()
+    top.title('Hyperlink')
+    top.geometry("400x100")
+    hyp_lbl = LabelFrame(top,text="Hyperlink Information", height=80, width=300)
+    hyp_lbl.place(x=10, y=5)
+
+    cb1=ttk.Combobox(top,width=15)
+    cb1.grid(row=1,column=1,padx=90,pady=30)
+
+    hype = StringVar()
+    hyp= Entry(top,textvariable=hype,width=35)
+    hyp.place(x=90,y=55)
+
+    hypbtn1 = Button(top,text="OK",width=10)
+    hypbtn1.place(x=315,y=8)
+
+    hypbtn2 = Button(top,text="Cancel",width=10)
+    hypbtn2.place(x=315,y=35)
+
   # def undo(self, *args):
   #   self.text_undo()
 
@@ -7345,12 +7360,13 @@ def mainpage():
     pass
   else:
     print(emdata)
-    winstyle.insert(0, emdata[52])
+    winstyle.insert(0, emdata[2])
   winstyle.place(x=280 ,y=20)
+  winstyle.current(4)
 
 
 
-  savebtn=Button(eighttab,image=saves,text="Save Settings",compound = LEFT, height=15, width=100)
+  savebtn=Button(eighttab,image=saves,text="Save Settings",compound = LEFT, height=15, width=100,command=save_email)
   savebtn.place(x=500, y=20)
 
 
@@ -7362,14 +7378,14 @@ def mainpage():
   emailmessage_Frame = Frame(mess_Notebook, height=430, width=1060)
   htmlsourse_Frame = Frame(mess_Notebook, height=430, width=1060)
   mess_Notebook.add(emailmessage_Frame, text="E-mail message")
-  mess_Notebook.add(htmlsourse_Frame, text="Html sourse code")
+  mess_Notebook.add(htmlsourse_Frame)
   mess_Notebook.place(x=5, y=50)
 
 
   scrollbar = Scrollbar(eighttab)
   scrollbar.place(x=1048, y=120, height=395)
   memaiframe=Text(emailmessage_Frame,yscrollcommand=scrollbar.set,font=('arial',12),undo=True)
-  memaiframe.pack(fill=BOTH,pady=28,expand=True)
+  memaiframe.pack(fill=BOTH,pady=28,expand=True,padx=9)
   scrollbar.config(command=memaiframe.yview)
 
   # emptylabel=Label(emailmessage_Frame)
@@ -7389,10 +7405,10 @@ def mainpage():
   btn4=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=paste,command=lambda :memaiframe.event_generate('<Control v>'))
   btn4.place(x=105, y=1)
 
-  btn5=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=undo)
+  btn5=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=undo, command=lambda:memaiframe.event_generate("<<Undo>>"))
   btn5.place(x=140, y=1)
 
-  btn6=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=redo)
+  btn6=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=redo, command=lambda:memaiframe.event_generate("<<Redo>>"))
   btn6.place(x=175, y=1)
 
   btn7=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=bold,command=bold_text)
@@ -7413,7 +7429,7 @@ def mainpage():
   btn12=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=center,command=align_center)
   btn12.place(x=385, y=1)
 
-  btn13=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=hyperlink)
+  btn13=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=hyperlink,command=open)
   btn13.place(x=420, y=1)
         
   btn14=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=remove,command=lambda :memaiframe.delete(0.0,END))
@@ -7446,23 +7462,25 @@ def mainpage():
 
 
 
-  btn1=Button(htmlsourse_Frame,width=20,height=20,compound = LEFT,image=selectall).place(x=0, y=1)
+  # btn1=Button(htmlsourse_Frame,width=20,height=20,compound = LEFT,image=selectall).place(x=0, y=1)
 
         
-  btn2=Button(htmlsourse_Frame,width=31,height=23,compound = LEFT,image=cut).place(x=36, y=1)
-  btn3=Button(htmlsourse_Frame,width=31,height=23,compound = LEFT,image=copy).place(x=73, y=1)
-  btn4=Button(htmlsourse_Frame,width=31,height=23,compound = LEFT,image=paste).place(x=105, y=1)
-  mhtmlframe=scrolledtext.Text(htmlsourse_Frame, height=400, width=1000, bg="white")
-  mhtmlframe.place(x=0, y=28)
+  # btn2=Button(htmlsourse_Frame,width=31,height=23,compound = LEFT,image=cut).place(x=36, y=1)
+  # btn3=Button(htmlsourse_Frame,width=31,height=23,compound = LEFT,image=copy).place(x=73, y=1)
+  # btn4=Button(htmlsourse_Frame,width=31,height=23,compound = LEFT,image=paste).place(x=105, y=1)
+  # mhtmlframe=scrolledtext.Text(htmlsourse_Frame, height=400, width=1000, bg="white")
+  # mhtmlframe.place(x=0, y=28)
 
 
-
+  def select(event):
+    memaiframe.insert('1.0',lbx01.get(ANCHOR))
 
   attachlbframe=LabelFrame(eighttab,text="placeholders(drag or double click to insert", height=500, width=233)
   attachlbframe.place(x=1080, y=22)
-  label_po = Label(eighttab,text="{{Company_Name}}",font="TimesNewRoman 12 ")
-  label_po.place(x=1090,y=46)
-  lbx01 = Listbox(eighttab,  height=28, width=34)
+  # label_po = Label(eighttab,text="{{Company_Name}}",font="TimesNewRoman 12 ")
+  # label_po.place(x=1090,y=46)
+  #list_str = StringVar()
+  lbx01 = Listbox(eighttab, height=28, width=34)
   lbx01.insert(END, "{{Company_Name}}")
   lbx01.insert(END, "{{Company_Address}}")
   lbx01.insert(END, "{{Company_Email1}}")
@@ -7474,121 +7492,9 @@ def mainpage():
   lbx01.insert(END, "{{Purchase_Order_Total}}")
   lbx01.insert(END, "{{Current_date}}")
   lbx01.place(x=1090, y=46)
-  # email_str1 = StringVar() 
-  # payment_lbx1 = Entry(eighttab,width=30,textvariable=email_str1,state='readonly',justify='center')
-  # payment_lbx1.place(x=1090,y=46)
-  # # if not podata:
-  # email_str1.set("{{Company_Name}}")
-  # # else:
-  #   # pass
-  #   # payment_lbx1.insert(0, podata[50])
+  lbx01.bind('<Double-1>', select)
 
-  # email_str2 = StringVar() 
-  # payment_lbx2 = Entry(eighttab,width=30,textvariable=email_str2,state='readonly',justify='center')
-  # payment_lbx2.place(x=1090,y=66)
-  # # if not podata:
-  # email_str2.set("{{Company_Address}}")
-  # # else:
-  # #   payment_lbx2.insert(0, podata[50])
-
-  # email_str3 = StringVar() 
-  # payment_lbx3 = Entry(eighttab,width=30,textvariable=email_str3,state='readonly',justify='center')
-  # payment_lbx3.place(x=1090,y=86)
-  # # if not podata:
-  # email_str3.set("{{Company_Email1}}")
-  # # else:
-  # #   payment_lbx3.insert(0, podata[50])
-
-  # email_str4 = StringVar() 
-  # payment_lbx4 = Entry(eighttab,width=30,textvariable=email_str4,state='readonly',justify='center')
-  # payment_lbx4.place(x=1090,y=106)
-  # # if not podata:
-  # email_str4.set("{{Customer_Name}}")
-  # # else:
-  # #   payment_lbx4.insert(0, podata[50])  
-
-  # email_str5 = StringVar() 
-  # payment_lbx5 = Entry(eighttab,width=30,textvariable=email_str5,state='readonly',justify='center')
-  # payment_lbx5.place(x=1090,y=126)
-  # # if not podata:
-  # email_str5.set("{{Customer_Address}}")
-  # # else:
-  # #   payment_lbx5.insert(0, podata[50])
-
-  # email_str6 = StringVar() 
-  # payment_lbx6 = Entry(eighttab,width=30,textvariable=email_str6,state='readonly',justify='center')
-  # payment_lbx6.place(x=1090,y=146)
-  # # if not podata:
-  # email_str6.set("{{Customer_Email}}")
-  # # else:
-  # #   payment_lbx6.insert(0, podata[50])
-
-  # email_str7 = StringVar() 
-  # payment_lbx7 = Entry(eighttab,width=30,textvariable=email_str7,state='readonly',justify='center')
-  # payment_lbx7.place(x=1090,y=166)
-  # # if not podata:
-  # email_str7.set("{{Purchase_Order_Number}}")
-  # # else:
-  # #   payment_lbx7.insert(0, podata[50])
-
-  # email_str8 = StringVar() 
-  # payment_lbx8 = Entry(eighttab,width=30,textvariable=email_str8,state='readonly',justify='center')
-  # payment_lbx8.place(x=1090,y=186)
-  # # if not podata:
-  # email_str8.set("{{Purchase_Order_Date}}")
-  # # else:
-  #   # email_str8.insert(0, podata[50])
-
-  # email_str9 = StringVar() 
-  # payment_lbx9 = Entry(eighttab,width=30,textvariable=email_str9,state='readonly',justify='center')
-  # payment_lbx9.place(x=1090,y=206)
-  # # if not podata:
-  # email_str9.set("{{Purchase_Order_Total}}")
-  # # else:
-  # #   payment_lbx9.insert(0, podata[50])
-
-  # email_str10 = StringVar() 
-  # payment_lbx10 = Entry(eighttab,width=30,textvariable=email_str10,state='readonly',justify='center',background='white')
-  # payment_lbx10.place(x=1090,y=226)
-  # # if not podata:
-  # email_str10.set("{{Current_date}}")
-  # # else:
-  # #   payment_lbx10.insert(0, podata[50])
-    
-  # def get_value():
-  #   e_text=payment_lbx1.get()
-  #   e_text=payment_lbx2.get()
-  #   e_text=payment_lbx3.get()
-  #   e_text=payment_lbx4.get()
-  #   e_text=payment_lbx5.get()
-  #   e_text=payment_lbx6.get()
-  #   # e_text=
-  #   # e_text=
-  #   # e_text=
-  #   # e_text=
-  def select():
-    mylabel.config(text=lbx01.get(ANCHOR))
-
-  global mylabel
-  mylabel=Label(eighttab,text="")
-  mylabel.place(x=8,y=120)
-    # memaiframe=Text(emailmessage_Frame,yscrollcommand=scrollbar.set,font=('arial',12),value=e_text)
-    # memaiframe.pack(fill=BOTH,pady=28,expand=True)
-
-  ebutton =Button(eighttab,text='enter',command=select)
-  ebutton.place(x=900,y=20)
      
-
-
-  # def myfunction():
-  #     data=''
-  #     for i in lbx01.curselection():
-  #         data+=lbx01.get(i)
-  #     memaiframe.config(text=data)
-  # btnl=Button(eighttab,text='click',command=myfunction)
-  # btnl.place(x=700, y=20)
-  
-#lbx01.bind(<<Double-Button-1>>,myfunction)
 
 ################################### tab09 ###########################
 
@@ -8070,8 +7976,8 @@ def mainpage():
   podata = fbcursor.fetchone()
   
 
-  ver = Label(tentab,text="Purchase order# prefix")
-  ver.place(x=15,y=25)
+  pver = Label(tentab,text="Purchase order# prefix")
+  pver.place(x=15,y=25)
 
   prefix_str = StringVar()
   pre_entry = Entry(tentab,textvariable=prefix_str)
@@ -8120,88 +8026,90 @@ def mainpage():
 
   pwin_menu = StringVar()
   colbox = ttk.Combobox(tentab,textvariable=pwin_menu,width=27)
-  colbox.place(x=15 ,y=160)
-  pord_win = pwin_menu.get()
+ # pord_win = pwin_menu.get()
   colbox['values'] = ('Default','Black','Maroon','Green','Olive','Navy','Purple','Teal','Gray','Silver','Red','Lime','Yellow','Blue','Fuchsia','Aqua','White','ScrollBar','Background','ActiveCaption','InactiveCaption','Menu','Window','WindowFrame','MenuText','WindowText','CaptionText','ActiveBorder','InactiveBorder','AppWorkSpace','Highlight','HighlightText','BtnFace','InactiveCaptionText','BtnHighlight','3DDkShadow','3DLight','InfoText','InfoBk','Custom')
   if not podata:
-    colbox.current(0)
+    colbox.current(4)
   else:
     colbox.insert(0, podata[42])
+  colbox.place(x=15 ,y=160)
 
   ver3 = Label(tentab,text="Customize purchase order text labels")
   ver3.place(x=15,y=190)
 
   pord_str1 = StringVar() 
   pord_lbx1 = Entry(tentab, width=30,textvariable=pord_str1)
-  pord_lbx1.place(x=15,y=220)
   if not podata:
     pord_str1.set('Purchase Order')
   else:
     pord_lbx1.insert(0, podata[44])
+  pord_lbx1.place(x=15,y=220)
+  
 
   pord_str2 = StringVar() 
   pord_lbx2 = Entry(tentab, width=30,textvariable=pord_str2)
-  pord_lbx2.place(x=15,y=240)
   if not podata:
     pord_str2.set('P.Order#')
   else:
     pord_lbx2.insert(0, podata[45])
+  pord_lbx2.place(x=15,y=240)
 
   pord_str3 = StringVar() 
   pord_lbx3 = Entry(tentab,width=30,textvariable=pord_str3)
-  pord_lbx3.place(x=15,y=260)
   if not podata:
     pord_str3.set('P.Order Date')
   else:
     pord_lbx3.insert(0, podata[46])
+  pord_lbx3.place(x=15,y=260)
 
   pord_str4 = StringVar() 
   pord_lbx4 = Entry(tentab,width=30,
   textvariable=pord_str4)
-  pord_lbx4.place(x=15,y=280)
   if not podata:
     pord_str4.set('Due date')
   else:
     pord_lbx4.insert(0, podata[47])
+  pord_lbx4.place(x=15,y=280)
+
 
   pord_str5 = StringVar() 
   pord_lbx5 = Entry(tentab,width=30,textvariable=pord_str5)
-  pord_lbx5.place(x=15,y=300)
   if not podata:
     pord_str5.set('Vendor')
   else:
     pord_lbx5.insert(0, podata[48])
+  pord_lbx5.place(x=15,y=300)
 
   pord_str6 = StringVar() 
   pord_lbx6 = Entry(tentab, width=30,textvariable=pord_str6)
-  pord_lbx6.place(x=15,y=320)
   if not podata:
     pord_str6.set('Delivery to')
   else:
     pord_lbx6.insert(0, podata[49])
+  pord_lbx6.place(x=15,y=320)
 
   pord_str7 = StringVar() 
   pord_lbx7 = Entry(tentab, width=30,textvariable=pord_str7)
-  pord_lbx7.place(x=15,y=340)
   if not podata:
     pord_str7.set('P.Order total')
   else:
     pord_lbx7.insert(0, podata[50])
+  pord_lbx7.place(x=15,y=340)
 
 
-  messagelbframe=LabelFrame(tentab,text="Predefined terms and conditions text for purchase orders", height=100, width=980)
-  messagelbframe.place(x=248, y=380)
+  pmessagelbframe=LabelFrame(tentab,text="Predefined terms and conditions text for purchase orders",height=70, width=980)
+  pmessagelbframe.place(x=248, y=396)
 
   # txt = scrolledtext.ScrolledText(tentab, undo=True,width=115,height=4)
   # txt.place(x=260,y=405)
 
-  pord_str8 = StringVar() 
-  entry2=Entry(tentab, width=155,textvariable=pord_str8)
-  entry2.place(x=260, y=400,height=65)
+  pord_str8= scrolledtext.ScrolledText(tentab)
   if not podata:
     pass
   else:
-    entry2.insert(0, podata[51])
+    pord_str8.insert('1.0', podata[51])
+  pord_str8.place(x=260,y=415,height=38,width=950)
+
 
 
   def restore_default_pord():
@@ -8225,12 +8133,20 @@ def mainpage():
   bttermadd1 = Button(tentab,text="Restore defaults",command=restore_default_pord)
   bttermadd1.place(x=45,y=430)
 
-  savebtn = Button(tentab,text="Refresh",width=15)
-  savebtn.place(x=1090,y=10)
 
+
+#------------Professional 1 (logo on left side)-------------  
+  # def mainmenu(event):
+  #   menuvar1= pwin_menu1.get()
+  #   print(menuvar1,"hello")
+  #   sql = "select * from company"
+  #   fbcursor.execute(sql)
+  #   podata1 = fbcursor.fetchone()
+
+    
   frame = Frame(tentab, width=953, height=300)
   frame.pack(expand=True, fill=BOTH)
-  frame.place(x=247,y=50)
+  frame.place(x=247,y=90)
   canvas=Canvas(frame, bg='grey', width=953, height=300, scrollregion=(0,0,700,700))
               
   vertibar=Scrollbar(frame, orient=VERTICAL)
@@ -8251,23 +8167,28 @@ def mainpage():
     window_image = canvas.create_window(175, 45, anchor="nw", window=pord_btlogo)
     pord_btlogo.photo = pord_image
   except:
-    pass  
+      pass  
   canvas.create_text(202, 160, text=""+pord_str2.get(), fill="black", font=('Helvetica 11'))
   canvas.create_text(215, 180, text=""+pord_str3.get(), fill="black", font=('Helvetica 11'))
   canvas.create_text(200, 200, text=""+pord_str4.get(), fill="black", font=('Helvetica 11'))
   canvas.create_text(191, 220, text="Terms", fill="black", font=('Helvetica 11'))
   canvas.create_text(205, 240, text="Order ref.#", fill="black", font=('Helvetica 11'))
-  canvas.create_text(350, 160, text="P.ORD/2022", fill="black", font=('Helvetica 11'))
+  canvas.create_text(350, 160, text="PORD/2022", fill="black", font=('Helvetica 11'))
   canvas.create_text(350, 180, text="05-05-2022", fill="black", font=('Helvetica 11'))
   canvas.create_text(350, 200, text="20-05-2022", fill="black", font=('Helvetica 11'))
   canvas.create_text(340, 220, text="NET 15", fill="black", font=('Helvetica 11'))
-
+          
   canvas.create_text(720, 60, text=" "+comname.get(), fill="black", font=('Helvetica 12 '))
-  canvas.create_text(700, 175, text=""+caddent.get('1.0', 'end-1c'), fill="black", font=('Helvetica 10'), width=125)
+          # canvas.create_text(700, 200, text=""+caddent.get('1.0', 'end-1c'), fill="black", font=('Helvetica 10'), width=125)
+  T_address = Text(canvas, height=5, width=40, font=('Helvetica 10'),borderwidth=0)
+  T_address.tag_configure('tag_name',justify='right')
+  T_address.insert('1.0', podata[2])
+  T_address.tag_add('tag_name','1.0', 'end')
+  T_address_window = canvas.create_window(520, 80, anchor="nw", window=T_address)
   canvas.create_text(695, 180, text=" "+comsalestax.get(), fill="black", font=('Helvetica 10'))
   canvas.create_text(700, 205, text=" "+pord_str1.get(), fill="black", font=('Helvetica 14 bold'))
   canvas.create_text(706, 225, text="TAX EXEMPTED", fill="black", font=('Helvetica 10'))
-          
+            
   canvas.create_text(210, 260, text=""+pord_str5.get(), fill="black", font=('Helvetica 10 underline'))
   canvas.create_text(203, 280, text="John Doe", fill="black", font=('Helvetica 10 '))
   canvas.create_text(246, 295, text="381 South Bedford Road", fill="black", font=('Helvetica 10'))
@@ -8278,11 +8199,11 @@ def mainpage():
   canvas.create_text(598, 295, text="381 South Bedford Road", fill="black", font=('Helvetica 10'))
   canvas.create_text(608, 310, text="Bedford Corners, NY 10549", fill="black", font=('Helvetica 10'))
   canvas.create_text(568, 325, text="United States", fill="black", font=('Helvetica 10'))
-      
+        
   s = ttk.Style()
-  s.configure('mystyle_1.Treeview.Heading', background=''+pwin_menu.get(),State='DISABLE')
+  s.configure('mystyle_2.Treeview.Heading', background=''+pwin_menu.get(),State='DISABLE')
 
-  tree=ttk.Treeview(canvas, column=("c1", "c2","c3", "c4", "c5"), show='headings',height= 0, style='mystyle_1.Treeview')
+  tree=ttk.Treeview(canvas, column=("c1", "c2","c3", "c4", "c5"), show='headings',height= 0, style='mystyle_2.Treeview')
 
   tree.column("# 1", anchor=E, stretch=NO, width=100)
   tree.heading("# 1", text="ID/SKU")
@@ -8294,7 +8215,7 @@ def mainpage():
   tree.heading("# 4", text="Unit Price")
   tree.column("# 5", anchor=E, stretch=NO, width=80)
   tree.heading("# 5", text="Price")
-          
+            
   window = canvas.create_window(120, 340, anchor="nw", window=tree)
 
   canvas.create_line(120, 390, 820, 390 )
@@ -8315,7 +8236,7 @@ def mainpage():
   canvas.create_text(165, 372, text="PROD-0001", fill="black", font=('Helvetica 10'))
   canvas.create_text(370, 372, text="Example product - Description text...", fill="black", font=('Helvetica 10'))
   canvas.create_text(610, 372, text="1", fill="black", font=('Helvetica 10'))
-    
+      
   if comcursignpla.get() == "before amount":
     canvas.create_text(704, 372, text=""+comcursign.get()+"200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
 
@@ -8330,7 +8251,7 @@ def mainpage():
 
   else:
     pass
-        # canvas.create_text(704, 372, text=""+comcursign.get()+"200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+          # canvas.create_text(704, 372, text=""+comcursign.get()+"200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
   if comcursignpla.get() == "before amount":
     canvas.create_text(784, 372, text=""+comcursign.get()+"200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
 
@@ -8344,7 +8265,8 @@ def mainpage():
     canvas.create_text(784, 372, text="200"+""+comdecsep.get()+"00 "+""+comcursign.get(), fill="black", font=('Helvetica 10'))
   else:
     pass
-        # canvas.create_text(784, 372, text=""+comcursign.get()+"200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+      
+          # canvas.create_text(784, 372, text=""+comcursign.get()+"200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
 
   canvas.create_text(650, 404, text="Subtotal", fill="black", font=('Helvetica 10'))
   if comcursignpla.get() == "before amount":
@@ -8358,7 +8280,7 @@ def mainpage():
     canvas.create_text(784, 404, text="200"+""+comdecsep.get()+"00 "+""+comcursign.get(), fill="black", font=('Helvetica 10'))
   else:
     pass
-        # canvas.create_text(784, 404, text=""+comcursign.get()+"200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+          # canvas.create_text(784, 404, text=""+comcursign.get()+"200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
 
   canvas.create_text(650, 428, text="TAX1", fill="black", font=('Helvetica 10'))
 
@@ -8372,10 +8294,10 @@ def mainpage():
     canvas.create_text(786, 428, text="18"+""+comdecsep.get()+"00 "+""+comcursign.get(), fill="black", font=('Helvetica 10'))
   else:
     pass
-        # canvas.create_text(786, 428, text=""+comcursign.get()+"18"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+          # canvas.create_text(786, 428, text=""+comcursign.get()+"18"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
 
   canvas.create_text(650, 454, text="Shipping and handling", fill="black", font=('Helvetica 10'))
-        
+          
   if comcursignpla.get() == "before amount":
     canvas.create_text(786, 454, text=""+comcursign.get()+"20"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
   elif comcursignpla.get() == "after amount":
@@ -8387,7 +8309,7 @@ def mainpage():
   else:
     pass
 
-        # canvas.create_text(786, 454, text=""+comcursign.get()+"20"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+          # canvas.create_text(786, 454, text=""+comcursign.get()+"20"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
 
   if comcursignpla.get() == "before amount":
     canvas.create_text(784, 479, text=""+comcursign.get()+"238"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10 bold'))
@@ -8400,7 +8322,7 @@ def mainpage():
   else:
     pass
 
-        # canvas.create_text(784, 479, text=""+comcursign.get()+"238"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10 bold'))
+          # canvas.create_text(784, 479, text=""+comcursign.get()+"238"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10 bold'))
   canvas.create_text(650, 479, text=""+pord_str6.get(), fill="black", font=('Helvetica 10 bold'))
   if comcursignpla.get() == "before amount":
     canvas.create_text(784, 502, text=""+comcursign.get()+"100"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
@@ -8413,9 +8335,9 @@ def mainpage():
   else:
     pass
 
-        # canvas.create_text(784, 502, text=""+comcursign.get()+"100"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+          # canvas.create_text(784, 502, text=""+comcursign.get()+"100"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
   canvas.create_text(650, 502, text="Total Paid", fill="black", font=('Helvetica 10'))
-        
+          
   if comcursignpla.get() == "before amount":
     canvas.create_text(784, 526, text=""+comcursign.get()+"138"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
   elif comcursignpla.get() == "after amount":
@@ -8426,23 +8348,249 @@ def mainpage():
     canvas.create_text(784, 526, text="138"+""+comdecsep.get()+"00 "+""+comcursign.get(), fill="black", font=('Helvetica 10'))
   else:
     pass
-        # canvas.create_text(784, 526, text=""+comcursign.get()+"138"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+          # canvas.create_text(784, 526, text=""+comcursign.get()+"138"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
   canvas.create_text(650, 526, text="Balance", fill="black", font=('Helvetica 10'))
 
   canvas.create_text(275, 550, text="Multiline comment text goes here..", fill="black", font=('Helvetica 10'))
   canvas.create_text(182, 560, text="...", fill="black", font=('Helvetica 10'))
   canvas.create_text(182, 570, text="...", fill="black", font=('Helvetica 10'))
   canvas.create_text(182, 580, text="...", fill="black", font=('Helvetica 10'))
-          
+            
   canvas.create_text(500, 600, text="Terms and Conditions", fill="black", font=('Helvetica 10'))
-  canvas.create_line(150, 620, 795, 620)
-  canvas.create_text(280, 640, text= ""+pord_str8.get(), fill="black", font=('Helvetica 10')) 
+  canvas.create_line(150, 608, 795, 608)
+          # canvas.create_text(280, 640, text= ""+est_str7.get(), fill="black", font=('Helvetica 10')) 
+  T = Text(canvas, height=3, width=90, font=('Helvetica 10'),borderwidth=0)
+  T.insert(END, podata[51])
+  T_window = canvas.create_window(155, 612, anchor="nw", window=T)
 
-  canvas.create_text(280, 655, text="Page footer text goes here...", fill="black", font=('Helvetica 10'))
-  canvas.create_text(720, 655, text="Page 1 of 1", fill="black", font=('Helvetica 10'))
+  canvas.create_text(280, 670, text="Page footer text goes here...", fill="black", font=('Helvetica 10'))
+  canvas.create_text(720, 670, text="Page 1 of 1", fill="black", font=('Helvetica 10')) 
 
+  def refresh():
+    frame = Frame(tentab, width=953, height=300)
+    frame.pack(expand=True, fill=BOTH)
+    frame.place(x=247,y=90)
+    canvas=Canvas(frame, bg='grey', width=953, height=300, scrollregion=(0,0,700,700))
+                
+    vertibar=Scrollbar(frame, orient=VERTICAL)
+    vertibar.pack(side=RIGHT,fill=Y)
+    vertibar.config(command=canvas.yview)
+            
+    canvas.config(width=953,height=300)
+    canvas.config(yscrollcommand=vertibar.set)
+    canvas.pack(expand=True,side=LEFT,fill=BOTH)
+    canvas.create_rectangle(100, 8, 850, 687 , outline='yellow',fill='white')
+    canvas.create_text(500, 25, text="Title text goes here...", fill="black", font=('Helvetica 10'))
+    try:
+      pord_image = Image.open("images/"+podata[13])
+      pord_resize_image = pord_image.resize((200,100))
+      pord_image = ImageTk.PhotoImage(pord_resize_image)
+
+      pord_btlogo = Label(canvas,width=200,height=100,image = pord_image) 
+      window_image = canvas.create_window(175, 45, anchor="nw", window=pord_btlogo)
+      pord_btlogo.photo = pord_image
+    except:
+        pass  
+    canvas.create_text(202, 160, text=""+pord_str2.get(), fill="black", font=('Helvetica 11'))
+    canvas.create_text(215, 180, text=""+pord_str3.get(), fill="black", font=('Helvetica 11'))
+    canvas.create_text(200, 200, text=""+pord_str4.get(), fill="black", font=('Helvetica 11'))
+    canvas.create_text(191, 220, text="Terms", fill="black", font=('Helvetica 11'))
+    canvas.create_text(205, 240, text="Order ref.#", fill="black", font=('Helvetica 11'))
+    canvas.create_text(350, 160, text="PORD/2022", fill="black", font=('Helvetica 11'))
+    canvas.create_text(350, 180, text="05-05-2022", fill="black", font=('Helvetica 11'))
+    canvas.create_text(350, 200, text="20-05-2022", fill="black", font=('Helvetica 11'))
+    canvas.create_text(340, 220, text="NET 15", fill="black", font=('Helvetica 11'))
+            
+    canvas.create_text(720, 60, text=" "+comname.get(), fill="black", font=('Helvetica 12 '))
+            # canvas.create_text(700, 200, text=""+caddent.get('1.0', 'end-1c'), fill="black", font=('Helvetica 10'), width=125)
+    T_address = Text(canvas, height=5, width=40, font=('Helvetica 10'),borderwidth=0)
+    T_address.tag_configure('tag_name',justify='right')
+    T_address.insert('1.0', podata[2])
+    T_address.tag_add('tag_name','1.0', 'end')
+    T_address_window = canvas.create_window(520, 80, anchor="nw", window=T_address)
+    canvas.create_text(695, 180, text=" "+comsalestax.get(), fill="black", font=('Helvetica 10'))
+    canvas.create_text(700, 205, text=" "+pord_str1.get(), fill="black", font=('Helvetica 14 bold'))
+    canvas.create_text(706, 225, text="TAX EXEMPTED", fill="black", font=('Helvetica 10'))
+              
+    canvas.create_text(210, 260, text=""+pord_str5.get(), fill="black", font=('Helvetica 10 underline'))
+    canvas.create_text(203, 280, text="John Doe", fill="black", font=('Helvetica 10 '))
+    canvas.create_text(246, 295, text="381 South Bedford Road", fill="black", font=('Helvetica 10'))
+    canvas.create_text(255, 310, text="Bedford Corners, NY 10549", fill="black", font=('Helvetica 10'))
+    canvas.create_text(215, 325, text="United States", fill="black", font=('Helvetica 10'))
+    canvas.create_text(550, 260, text="Ship to", fill="black", font=('Helvetica 10 underline'))
+    canvas.create_text(556, 280, text="John Doe", fill="black", font=('Helvetica 10 '))
+    canvas.create_text(598, 295, text="381 South Bedford Road", fill="black", font=('Helvetica 10'))
+    canvas.create_text(608, 310, text="Bedford Corners, NY 10549", fill="black", font=('Helvetica 10'))
+    canvas.create_text(568, 325, text="United States", fill="black", font=('Helvetica 10'))
+          
+    s = ttk.Style()
+    s.configure('mystyle_2.Treeview.Heading', background=''+pwin_menu.get(),State='DISABLE')
+
+    tree=ttk.Treeview(canvas, column=("c1", "c2","c3", "c4", "c5"), show='headings',height= 0, style='mystyle_2.Treeview')
+
+    tree.column("# 1", anchor=E, stretch=NO, width=100)
+    tree.heading("# 1", text="ID/SKU")
+    tree.column("# 2", anchor=E, stretch=NO, width=350)
+    tree.heading("# 2", text="Product/Service - Description")
+    tree.column("# 3", anchor=E, stretch=NO, width=80)
+    tree.heading("# 3", text="Quantity")
+    tree.column("# 4", anchor=E, stretch=NO, width=90)
+    tree.heading("# 4", text="Unit Price")
+    tree.column("# 5", anchor=E, stretch=NO, width=80)
+    tree.heading("# 5", text="Price")
+              
+    window = canvas.create_window(120, 340, anchor="nw", window=tree)
+
+    canvas.create_line(120, 390, 820, 390 )
+    canvas.create_line(120, 340, 120, 365 )
+    canvas.create_line(120, 365, 120, 390 )
+    canvas.create_line(820, 340, 820, 540 )
+    canvas.create_line(740, 340, 740, 540 )
+    canvas.create_line(570, 340, 570, 540 )
+    canvas.create_line(570, 415, 820, 415 )
+    canvas.create_line(570, 440, 820, 440 )
+    canvas.create_line(570, 465, 820, 465 )
+    canvas.create_line(570, 490, 820, 490 )
+    canvas.create_line(570, 515, 820, 515 )
+    canvas.create_line(650, 340, 650, 390 )
+    canvas.create_line(220, 340, 220, 390 )
+    canvas.create_line(570, 540, 820, 540 )
+
+    canvas.create_text(165, 372, text="PROD-0001", fill="black", font=('Helvetica 10'))
+    canvas.create_text(370, 372, text="Example product - Description text...", fill="black", font=('Helvetica 10'))
+    canvas.create_text(610, 372, text="1", fill="black", font=('Helvetica 10'))
+        
+    if comcursignpla.get() == "before amount":
+      canvas.create_text(704, 372, text=""+comcursign.get()+"200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+
+    elif comcursignpla.get() == "after amount":
+      canvas.create_text(704, 372, text="200"+""+comdecsep.get()+"00"+""+comcursign.get(), fill="black", font=('Helvetica 10'))
+
+    elif comcursignpla.get() == "before amount with space":
+      canvas.create_text(704, 372, text=""+comcursign.get()+" 200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+
+    elif comcursignpla.get() == "after amount with space":
+      canvas.create_text(704, 372, text="200"+""+comdecsep.get()+"00 "+""+comcursign.get(), fill="black", font=('Helvetica 10'))
+
+    else:
+      pass
+            # canvas.create_text(704, 372, text=""+comcursign.get()+"200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+    if comcursignpla.get() == "before amount":
+      canvas.create_text(784, 372, text=""+comcursign.get()+"200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+
+    elif comcursignpla.get() == "after amount":
+      canvas.create_text(784, 372, text="200"+""+comdecsep.get()+"00"+""+comcursign.get(), fill="black", font=('Helvetica 10'))
+
+    elif comcursignpla.get() == "before amount with space":
+      canvas.create_text(784, 372, text=""+comcursign.get()+" 200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+
+    elif comcursignpla.get() == "after amount with space":
+      canvas.create_text(784, 372, text="200"+""+comdecsep.get()+"00 "+""+comcursign.get(), fill="black", font=('Helvetica 10'))
+    else:
+      pass
+        
+            # canvas.create_text(784, 372, text=""+comcursign.get()+"200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+
+    canvas.create_text(650, 404, text="Subtotal", fill="black", font=('Helvetica 10'))
+    if comcursignpla.get() == "before amount":
+      canvas.create_text(784, 404, text=""+comcursign.get()+"200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+    elif comcursignpla.get() == "after amount":
+      canvas.create_text(784, 404, text="200"+""+comdecsep.get()+"00"+""+comcursign.get(), fill="black", font=('Helvetica 10'))
+
+    elif comcursignpla.get() == "before amount with space":
+      canvas.create_text(784, 404, text=""+comcursign.get()+" 200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+    elif comcursignpla.get() == "after amount with space":
+      canvas.create_text(784, 404, text="200"+""+comdecsep.get()+"00 "+""+comcursign.get(), fill="black", font=('Helvetica 10'))
+    else:
+      pass
+            # canvas.create_text(784, 404, text=""+comcursign.get()+"200"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+
+    canvas.create_text(650, 428, text="TAX1", fill="black", font=('Helvetica 10'))
+
+    if comcursignpla.get() == "before amount":
+      canvas.create_text(786, 428, text=""+comcursign.get()+"18"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+    elif comcursignpla.get() == "after amount":
+      canvas.create_text(786, 428, text="18"+""+comdecsep.get()+"00"+""+comcursign.get(), fill="black", font=('Helvetica 10'))
+    elif comcursignpla.get() == "before amount with space":
+      canvas.create_text(786, 428, text=""+comcursign.get()+" 18"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+    elif comcursignpla.get() == "after amount with space":
+      canvas.create_text(786, 428, text="18"+""+comdecsep.get()+"00 "+""+comcursign.get(), fill="black", font=('Helvetica 10'))
+    else:
+      pass
+            # canvas.create_text(786, 428, text=""+comcursign.get()+"18"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+
+    canvas.create_text(650, 454, text="Shipping and handling", fill="black", font=('Helvetica 10'))
+            
+    if comcursignpla.get() == "before amount":
+      canvas.create_text(786, 454, text=""+comcursign.get()+"20"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+    elif comcursignpla.get() == "after amount":
+      canvas.create_text(786, 454, text="20"+""+comdecsep.get()+"00"+""+comcursign.get(), fill="black", font=('Helvetica 10'))
+    elif comcursignpla.get() == "before amount with space":
+      canvas.create_text(786, 454, text=""+comcursign.get()+" 20"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+    elif comcursignpla.get() == "after amount with space":
+      canvas.create_text(786, 454, text="20"+""+comdecsep.get()+"00 "+""+comcursign.get(), fill="black", font=('Helvetica 10'))
+    else:
+      pass
+
+            # canvas.create_text(786, 454, text=""+comcursign.get()+"20"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+
+    if comcursignpla.get() == "before amount":
+      canvas.create_text(784, 479, text=""+comcursign.get()+"238"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10 bold'))
+    elif comcursignpla.get() == "after amount":
+      canvas.create_text(784, 479, text="238"+""+comdecsep.get()+"00"+""+comcursign.get(), fill="black", font=('Helvetica 10 bold'))
+    elif comcursignpla.get() == "before amount with space":
+      canvas.create_text(784, 479, text=""+comcursign.get()+" 238"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10 bold'))
+    elif comcursignpla.get() == "after amount with space":
+      canvas.create_text(784, 479, text="238"+""+comdecsep.get()+"00 "+""+comcursign.get(), fill="black", font=('Helvetica 10 bold'))
+    else:
+      pass
+
+            # canvas.create_text(784, 479, text=""+comcursign.get()+"238"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10 bold'))
+    canvas.create_text(650, 479, text=""+pord_str6.get(), fill="black", font=('Helvetica 10 bold'))
+    if comcursignpla.get() == "before amount":
+      canvas.create_text(784, 502, text=""+comcursign.get()+"100"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+    elif comcursignpla.get() == "after amount":
+      canvas.create_text(784, 502, text="100"+""+comdecsep.get()+"00"+""+comcursign.get(), fill="black", font=('Helvetica 10'))
+    elif comcursignpla.get() == "before amount with space":
+      canvas.create_text(784, 502, text=""+comcursign.get()+" 100"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+    elif comcursignpla.get() == "after amount with space":
+      canvas.create_text(784, 502, text="100"+""+comdecsep.get()+"00 "+""+comcursign.get(), fill="black", font=('Helvetica 10'))
+    else:
+      pass
+
+            # canvas.create_text(784, 502, text=""+comcursign.get()+"100"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+    canvas.create_text(650, 502, text="Total Paid", fill="black", font=('Helvetica 10'))
+            
+    if comcursignpla.get() == "before amount":
+      canvas.create_text(784, 526, text=""+comcursign.get()+"138"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+    elif comcursignpla.get() == "after amount":
+      canvas.create_text(784, 526, text="138"+""+comdecsep.get()+"00"+""+comcursign.get(), fill="black", font=('Helvetica 10'))
+    elif comcursignpla.get() == "before amount with space":
+      canvas.create_text(784, 526, text=""+comcursign.get()+" 138"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+    elif comcursignpla.get() == "after amount with space":
+      canvas.create_text(784, 526, text="138"+""+comdecsep.get()+"00 "+""+comcursign.get(), fill="black", font=('Helvetica 10'))
+    else:
+      pass
+            # canvas.create_text(784, 526, text=""+comcursign.get()+"138"+""+comdecsep.get()+"00", fill="black", font=('Helvetica 10'))
+    canvas.create_text(650, 526, text="Balance", fill="black", font=('Helvetica 10'))
+
+    canvas.create_text(275, 550, text="Multiline comment text goes here..", fill="black", font=('Helvetica 10'))
+    canvas.create_text(182, 560, text="...", fill="black", font=('Helvetica 10'))
+    canvas.create_text(182, 570, text="...", fill="black", font=('Helvetica 10'))
+    canvas.create_text(182, 580, text="...", fill="black", font=('Helvetica 10'))
+              
+    canvas.create_text(500, 600, text="Terms and Conditions", fill="black", font=('Helvetica 10'))
+    canvas.create_line(150, 608, 795, 608)
+            # canvas.create_text(280, 640, text= ""+est_str7.get(), fill="black", font=('Helvetica 10')) 
+    T = Text(canvas, height=3, width=90, font=('Helvetica 10'),borderwidth=0)
+    T.insert(END, podata[51])
+    T_window = canvas.create_window(155, 612, anchor="nw", window=T)
+
+    canvas.create_text(280, 670, text="Page footer text goes here...", fill="black", font=('Helvetica 10'))
+    canvas.create_text(720, 670, text="Page 1 of 1", fill="black", font=('Helvetica 10'))          
+
+  refreshbtn = Button(tentab,text="Refresh",width=15,command=refresh)
+  refreshbtn.place(x=1090,y=10)   
     
-
-
 root.mainloop()
 
