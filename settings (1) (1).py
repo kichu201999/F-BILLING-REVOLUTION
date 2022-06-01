@@ -331,6 +331,8 @@ def mainpage():
     pord_text6 = pord_str6.get()
     pord_text7 = pord_str7.get()
     pord_predefind = pord_str8.get(1.0,END)
+    combo = em_menu.get()
+
    
 
     child = exctree.get_children()
@@ -344,20 +346,20 @@ def mainpage():
     if not i:
       if filename == "":
         print(12)
-        sql = 'insert into company(name, address, email,salestaxno,currency,currencysign,currsignplace,  decimalseperator,excurrency,dateformat,exdate,taxtype,printimageornot,tax1name,tax1rate,printtax1,  tax2name,tax2rate,printtax2,attachment_file_type,miscellanoustab_cbutton1,miscellanoustab_cbutton2,miscellanoustab_cbutton3,miscellanoustab_cbutton4,miscellanoustab_cbutton5,miscellanoustab_cbutton6,Estimate_prefix,Customizeestimatetextlabels,Customizeestimatetextlabels1,Customizeestimatetextlabels2,Customizeestimatetextlabels3,Customizeestimatetextlabels4,Customizeestimatetextlabels5,Defaultestimatetemplate,Startingestimatenumber,Predefinedtextforestimates,adv_Selectedtemplatepreview,est_Headerboxbackgroundcolor,porder_prefix,headrebox_color,starting_porderno,text_label1,text_label2,text_label3,text_label4,text_label5,text_label6,text_label7,predefindterms_porder) values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
-        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind)
+        sql = 'insert into company(name, address, email,salestaxno,currency,currencysign,currsignplace,  decimalseperator,excurrency,dateformat,exdate,taxtype,printimageornot,tax1name,tax1rate,printtax1,  tax2name,tax2rate,printtax2,attachment_file_type,miscellanoustab_cbutton1,miscellanoustab_cbutton2,miscellanoustab_cbutton3,miscellanoustab_cbutton4,miscellanoustab_cbutton5,miscellanoustab_cbutton6,Estimate_prefix,Customizeestimatetextlabels,Customizeestimatetextlabels1,Customizeestimatetextlabels2,Customizeestimatetextlabels3,Customizeestimatetextlabels4,Customizeestimatetextlabels5,Defaultestimatetemplate,Startingestimatenumber,Predefinedtextforestimates,adv_Selectedtemplatepreview,est_Headerboxbackgroundcolor,porder_prefix,headrebox_color,starting_porderno,text_label1,text_label2,text_label3,text_label4,text_label5,text_label6,text_label7,predefindterms_porder,email_template) values(%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo)
         fbcursor.execute(sql, val)
         fbilldb.commit()
       else:
         shutil.copyfile(filename, os.getcwd()+'/images/'+filename.split('/')[-1])
-        sql = 'insert into company(name, address, email,salestaxno,currency,currencysign,currsignplace,  decimalseperator,excurrency,dateformat,exdate,taxtype,printimageornot,tax1name,tax1rate,printtax1,  tax2name,tax2rate,printtax2,image,attachment_file_type,miscellanoustab_cbutton1,miscellanoustab_cbutton2,miscellanoustab_cbutton3,miscellanoustab_cbutton4,miscellanoustab_cbutton5,miscellanoustab_cbutton6,Estimate_prefix,Customizeestimatetextlabels,Customizeestimatetextlabels1,Customizeestimatetextlabels2,Customizeestimatetextlabels3,Customizeestimatetextlabels4,Customizeestimatetextlabels5,Defaultestimatetemplate,Startingestimatenumber,Predefinedtextforestimates,adv_Selectedtemplatepreview,est_Headerboxbackgroundcolor,porder_prefix,headrebox_color,starting_porderno,text_label1,text_label2,text_label3,text_label4,text_label5,text_label6,text_label7,predefindterms_porder) values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
-        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,filename.split('/')[-1],radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind)
+        sql = 'insert into company(name, address, email,salestaxno,currency,currencysign,currsignplace,  decimalseperator,excurrency,dateformat,exdate,taxtype,printimageornot,tax1name,tax1rate,printtax1,  tax2name,tax2rate,printtax2,image,attachment_file_type,miscellanoustab_cbutton1,miscellanoustab_cbutton2,miscellanoustab_cbutton3,miscellanoustab_cbutton4,miscellanoustab_cbutton5,miscellanoustab_cbutton6,Estimate_prefix,Customizeestimatetextlabels,Customizeestimatetextlabels1,Customizeestimatetextlabels2,Customizeestimatetextlabels3,Customizeestimatetextlabels4,Customizeestimatetextlabels5,Defaultestimatetemplate,Startingestimatenumber,Predefinedtextforestimates,adv_Selectedtemplatepreview,est_Headerboxbackgroundcolor,porder_prefix,headrebox_color,starting_porderno,text_label1,text_label2,text_label3,text_label4,text_label5,text_label6,text_label7,predefindterms_porder,email_template) values(%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,filename.split('/')[-1],radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo)
         fbcursor.execute(sql, val)
         fbilldb.commit()
     else:
       if filename == "":
-        sql = "update company set name=%s, address=%s, email=%s,salestaxno=%s,currency=%s,currencysign=%s,  currsignplace=%s,decimalseperator=%s,excurrency=%s,dateformat=%s,exdate=%s,taxtype=%s,  printimageornot=%s,tax1name=%s,tax1rate=%s,printtax1=%s,tax2name=%s,tax2rate=%s,printtax2=%s,attachment_file_type=%s,miscellanoustab_cbutton1=%s,miscellanoustab_cbutton2=%s,miscellanoustab_cbutton3=%s,miscellanoustab_cbutton4=%s,miscellanoustab_cbutton5=%s,miscellanoustab_cbutton6=%s,Estimate_prefix=%s,Customizeestimatetextlabels=%s,Customizeestimatetextlabels1=%s,Customizeestimatetextlabels2=%s,Customizeestimatetextlabels3=%s,Customizeestimatetextlabels4=%s,Customizeestimatetextlabels5=%s,Defaultestimatetemplate=%s,Startingestimatenumber=%s,Predefinedtextforestimates=%s,adv_Selectedtemplatepreview=%s,est_Headerboxbackgroundcolor=%s,porder_prefix=%s,headrebox_color=%s,starting_porderno=%s,text_label1=%s,text_label2=%s,text_label3=%s,text_label4=%s,text_label5=%s,text_label6=%s,text_label7=%s,predefindterms_porder=%s"
-        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind)
+        sql = "update company set name=%s, address=%s, email=%s,salestaxno=%s,currency=%s,currencysign=%s,  currsignplace=%s,decimalseperator=%s,excurrency=%s,dateformat=%s,exdate=%s,taxtype=%s,  printimageornot=%s,tax1name=%s,tax1rate=%s,printtax1=%s,tax2name=%s,tax2rate=%s,printtax2=%s,attachment_file_type=%s,miscellanoustab_cbutton1=%s,miscellanoustab_cbutton2=%s,miscellanoustab_cbutton3=%s,miscellanoustab_cbutton4=%s,miscellanoustab_cbutton5=%s,miscellanoustab_cbutton6=%s,Estimate_prefix=%s,Customizeestimatetextlabels=%s,Customizeestimatetextlabels1=%s,Customizeestimatetextlabels2=%s,Customizeestimatetextlabels3=%s,Customizeestimatetextlabels4=%s,Customizeestimatetextlabels5=%s,Defaultestimatetemplate=%s,Startingestimatenumber=%s,Predefinedtextforestimates=%s,adv_Selectedtemplatepreview=%s,est_Headerboxbackgroundcolor=%s,porder_prefix=%s,headrebox_color=%s,starting_porderno=%s,text_label1=%s,text_label2=%s,text_label3=%s,text_label4=%s,text_label5=%s,text_label6=%s,text_label7=%s,predefindterms_porder=%s,email_template=%s"
+        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo)
         fbcursor.execute(sql, val)
         fbilldb.commit()
       else:
@@ -7132,11 +7134,8 @@ def mainpage():
   eighttab=Frame(eighttab1, bg="#f5f3f2", height=700)
   eighttab.pack(side="top", fill=BOTH)
 
-  def  save_email():
-    combo = em_menu.get()
-    #listbo = list_str.get()
 
-  sql = "select * from email"
+  sql = "select * from company"
   fbcursor.execute(sql)
   emdata = fbcursor.fetchone()
 
@@ -7152,6 +7151,8 @@ def mainpage():
     if paym == "Purchase Order E-Mail Template":
       lb1 = Label(eighttab,text='Purchase Order E-Mail Template',font="TimesNewRoman 12 ")
       lb1.place(x=2,y=20)
+      def select_list(event):
+        memaiframe.insert('1.0',lbx.get(ANCHOR))
       lbx = Listbox(eighttab,  height=29, width=34)
       lbx.insert(END, "{{Company_Name}}")
       lbx.insert(END, "{{Company_Address}}")
@@ -7164,10 +7165,14 @@ def mainpage():
       lbx.insert(END, "{{Purchase_Order_Total}}")
       lbx.insert(END, "{{Current_date}}")
       lbx.place(x=1090, y=46)
+      lbx.bind('<Double-1>', select_list)
+
 
     elif paym == "Estimate E-Mail Template":
       lb4 = Label(eighttab,text='Estimate E-Mail Template',font="TimesNewRoman 12 ")
       lb4.place(x=2,y=20)
+      def select_list(event):
+        memaiframe.insert('1.0',lbx.get(ANCHOR))
       lbx = Listbox(eighttab,  height=29, width=34)
       lbx.insert(END, "{{Company_Name}}")
       lbx.insert(END, "{{Company_Address}}")
@@ -7181,11 +7186,15 @@ def mainpage():
       lbx.insert(END, "{{Estimate_Balance}}")
       lbx.insert(END, "{{Current_date}}")
       lbx.place(x=1090, y=46)
+      lbx.bind('<Double-1>', select_list)
+
 
     
     elif paym == "Order E-Mail Template":
       lb2 = Label(eighttab,text='Order E-Mail Template',font="TimesNewRoman 12 ")
       lb2.place(x=2,y=20)
+      def select_list(event):
+        memaiframe.insert('1.0',lbx.get(ANCHOR))
       lbx = Listbox(eighttab,  height=29, width=34)
       lbx.insert(END, "{{Company_Name}}")
       lbx.insert(END, "{{Company_Address}}")
@@ -7199,10 +7208,14 @@ def mainpage():
       lbx.insert(END, "{{Order_Balance}}")
       lbx.insert(END, "{{Current_date}}")
       lbx.place(x=1090, y=46)
+      lbx.bind('<Double-1>', select_list)
+
       
     elif paym == "Invoice E-Mail Template":
       lb3 = Label(eighttab,text='Invoice E-Mail Template',font="TimesNewRoman 12 ")
       lb3.place(x=2,y=20)
+      def select_list(event):
+        memaiframe.insert('1.0',lbx.get(ANCHOR))
       lbx = Listbox(eighttab,  height=29, width=34)
       lbx.insert(END, "{{Company_Name}}")
       lbx.insert(END, "{{Company_Address}}")
@@ -7218,11 +7231,15 @@ def mainpage():
       lbx.insert(END, "{{Invoice_TotalPaid}}")
       lbx.insert(END, "{{Invoice_Balance}}")
       lbx.insert(END, "{{Current_date}}")
-      lbx.place(x=1090, y=46)  
+      lbx.place(x=1090, y=46)
+      lbx.bind('<Double-1>', select_list)
+  
      
     elif paym == "Payment Receipt Template":
       lb5 = Label(eighttab,text='Payment Receipt Template',font="TimesNewRoman 12 ")
       lb5.place(x=2,y=20)
+      def select_list(event):
+        memaiframe.insert('1.0',lbx.get(ANCHOR))
       lbx = Listbox(eighttab,  height=29, width=34)
       lbx.insert(END, "{{Company_Name}}")
       lbx.insert(END, "{{Company_Address}}")
@@ -7245,9 +7262,10 @@ def mainpage():
       lbx.insert(END, "{{Payment_Description}}")
       lbx.insert(END, "{{Payment_ID}}")
       lbx.place(x=1090, y=46)
+      lbx.bind('<Double-1>', select_list)
       memaiframe.insert('1.0','Dear {{Customer_Name}},\n\nThis message is to inform you that your payment of {{Currency_Sign}}{{Payment_Amount}} {{Currency}} for Invoice# {{Invoice_Number}} has been received."\n\nInvoice ID: {{Invoice_Number}}\nPayment Date: {{Payment_Date}}\nAmount: {{Currency_Sign}}{{Payment_Amount}} {{Currency}}\nPaid by: {{Payment_Mode}}\nDescription: {{Payment_Description}}\n\nThank you for your business.\n{{Company_Name}}')
 
-  fontSize=12
+  fontSize=20
   fontStyle='arial'
   def font_style(event):
     global fontStyle
@@ -7278,7 +7296,10 @@ def mainpage():
   def underline_text():
     text_property=font.Font(font=memaiframe['font']).actual()
     if text_property['underline']==0:
-      memaiframe.config(font=(fontStyle,fontSize,'underline'))
+      memaiframe.config(font=(fontStyle,fontSize,'underline','bold'))
+
+    # if text_property['underline']==0:
+    #   memaiframe.config(font=(fontStyle,fontSize,'underline'))
 
     if text_property['underline']==1:
       memaiframe.config(font=(fontStyle,fontSize))
@@ -7305,6 +7326,9 @@ def mainpage():
     memaiframe.delete(0.0,END)
     memaiframe.insert(INSERT,data,'center')
 
+
+ 
+
   def open():
     top = Toplevel()
     top.title('Hyperlink')
@@ -7312,8 +7336,53 @@ def mainpage():
     hyp_lbl = LabelFrame(top,text="Hyperlink Information", height=80, width=300)
     hyp_lbl.place(x=10, y=5)
 
-    cb1=ttk.Combobox(top,width=15)
+    hyp_lbl1 = Label(top,text="Type:")
+    hyp_lbl1.place(x=18, y=24)
+    
+    def comb_select(event):
+      hyper = cb_comb.get()
+      if hyper == "(other)":
+        hyp= Entry(top,width=35)
+        hyp.place(x=90,y=55)
+        hyp.insert(END,  "(other)")
+      elif hyper == "file://":
+        hyp= Entry(top,width=35)
+        hyp.place(x=90,y=55)
+        hyp.insert(END,  "file://")
+      elif hyper == "ftp://":
+        hyp= Entry(top,width=35)
+        hyp.place(x=90,y=55)
+        hyp.insert(END,  "ftp://") 
+      elif hyper == "http://":
+        hyp= Entry(top,width=35)
+        hyp.place(x=90,y=55)
+        hyp.insert(END,  "http://") 
+      elif hyper == "https://":
+        hyp= Entry(top,width=35)
+        hyp.place(x=90,y=55)
+        hyp.insert(END,  "https://") 
+      elif hyper == "mailto:":
+        hyp= Entry(top,width=35)
+        hyp.place(x=90,y=55)
+        hyp.insert(END,  "mailto:") 
+      elif hyper == "telnet:":
+        hyp= Entry(top,width=35)
+        hyp.place(x=90,y=55)
+        hyp.insert(END,  "telnet:") 
+
+    
+
+
+    cb_comb = StringVar()
+    cb1=ttk.Combobox(top,textvariable=cb_comb,width=15)
     cb1.grid(row=1,column=1,padx=90,pady=30)
+    cb1['values']=('(other)','file://','ftp://','http://','https://','mailto:','news:','telnet:')
+    cb1.current(0)
+    cb1.bind('<<ComboboxSelected>>',comb_select)
+
+
+    hyp_lbl2 = Label(top,text="URL:")
+    hyp_lbl2.place(x=18, y=55)
 
     hype = StringVar()
     hyp= Entry(top,textvariable=hype,width=35)
@@ -7366,7 +7435,7 @@ def mainpage():
 
 
 
-  savebtn=Button(eighttab,image=saves,text="Save Settings",compound = LEFT, height=15, width=100,command=save_email)
+  savebtn=Button(eighttab,image=saves,text="Save Settings",compound = LEFT, height=15, width=100)
   savebtn.place(x=500, y=20)
 
 
@@ -7382,18 +7451,30 @@ def mainpage():
   mess_Notebook.place(x=5, y=50)
 
 
-  scrollbar = Scrollbar(eighttab)
-  scrollbar.place(x=1048, y=120, height=395)
-  memaiframe=Text(emailmessage_Frame,yscrollcommand=scrollbar.set,font=('arial',12),undo=True)
-  memaiframe.pack(fill=BOTH,pady=28,expand=True,padx=9)
-  scrollbar.config(command=memaiframe.yview)
+  # scrollbar = Scrollbar(eighttab)
+  # scrollbar.place(x=1048, y=120, height=396)
+  # meframe = StringVar()
+  memaiframe=scrolledtext.Text(emailmessage_Frame, width=1060, bg="white",undo=True,height=430)
+  if not emdata:
+    pass
+  else:
+    memaiframe.insert('1.0', emdata[51])
+  memaiframe.place(y=28,x=9)
+
+  # if  not emdata:
+  #   pass
+  # else:
+  #   print(emdata)
+  #   memaiframe.insert(0, emdata[3])
+ # memaiframe=Text(emailmessage_Frame,yscrollcommand=scrollbar.set,font=('arial 16'),undo=True,width=115,height=100)
+  #scrollbar.config(command=memaiframe.yview)
 
   # emptylabel=Label(emailmessage_Frame)
   # emptylabel.pack(pady=28,fill=BOTH)
 
 
   btn1=Button(emailmessage_Frame,width=20,height=20,compound = LEFT,image=selectall,command=lambda :memaiframe.event_generate('<Control a>'))
-  btn1.place(x=0, y=1)
+  btn1.place(x=5, y=1)
 
         
   btn2=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=cut,command=lambda :memaiframe.event_generate('<Control x>'))
@@ -7444,16 +7525,17 @@ def mainpage():
 
   size_variable=IntVar()
   compo = ttk.Combobox(emailmessage_Frame, width=14,textvariable=size_variable,values=tuple(range(10,80)))
+  compo['values'] =('10','12','14','16','18','20','22','24','26','28')
   compo.place(x=600, y=5)
-  compo.current(0)
+  compo.current(4)
 
   font_families=font.families()
   font_family__variable=StringVar()
-  combo =ttk.Combobox(emailmessage_Frame, width=18,textvariable=font_family__variable,values=font_families)
-  combo.place(x=720, y=5)
-  combo.current(font_families.index('Arial'))
+  #combo =ttk.Combobox(emailmessage_Frame, width=18,textvariable=font_family__variable,values=font_families)
+  #combo.place(x=720, y=5)
+  #combo.current(font_families.index('Arial'))
 
-  combo.bind('<<ComboboxSelected>>',font_style)
+  #combo.bind('<<ComboboxSelected>>',font_style)
   compo.bind('<<ComboboxSelected>>',font_size)
 
 
@@ -8029,7 +8111,7 @@ def mainpage():
  # pord_win = pwin_menu.get()
   colbox['values'] = ('Default','Black','Maroon','Green','Olive','Navy','Purple','Teal','Gray','Silver','Red','Lime','Yellow','Blue','Fuchsia','Aqua','White','ScrollBar','Background','ActiveCaption','InactiveCaption','Menu','Window','WindowFrame','MenuText','WindowText','CaptionText','ActiveBorder','InactiveBorder','AppWorkSpace','Highlight','HighlightText','BtnFace','InactiveCaptionText','BtnHighlight','3DDkShadow','3DLight','InfoText','InfoBk','Custom')
   if not podata:
-    colbox.current(4)
+    colbox.current(2)
   else:
     colbox.insert(0, podata[42])
   colbox.place(x=15 ,y=160)
@@ -8135,13 +8217,9 @@ def mainpage():
 
 
 
-#------------Professional 1 (logo on left side)-------------  
-  # def mainmenu(event):
-  #   menuvar1= pwin_menu1.get()
-  #   print(menuvar1,"hello")
-  #   sql = "select * from company"
-  #   fbcursor.execute(sql)
-  #   podata1 = fbcursor.fetchone()
+  sql = "select * from company"
+  fbcursor.execute(sql)
+  podata1 = fbcursor.fetchone()
 
     
   frame = Frame(tentab, width=953, height=300)
@@ -8359,9 +8437,9 @@ def mainpage():
   canvas.create_text(500, 600, text="Terms and Conditions", fill="black", font=('Helvetica 10'))
   canvas.create_line(150, 608, 795, 608)
           # canvas.create_text(280, 640, text= ""+est_str7.get(), fill="black", font=('Helvetica 10')) 
-  T = Text(canvas, height=3, width=90, font=('Helvetica 10'),borderwidth=0)
-  T.insert(END, podata[51])
-  T_window = canvas.create_window(155, 612, anchor="nw", window=T)
+  PT = Text(canvas, height=3, width=90, font=('Helvetica 10'),borderwidth=0)
+  PT.insert('1.0', pord_str8.get('1.0', END))
+  PT_window = canvas.create_window(155, 612, anchor="nw", window=PT)
 
   canvas.create_text(280, 670, text="Page footer text goes here...", fill="black", font=('Helvetica 10'))
   canvas.create_text(720, 670, text="Page 1 of 1", fill="black", font=('Helvetica 10')) 
@@ -8582,9 +8660,9 @@ def mainpage():
     canvas.create_text(500, 600, text="Terms and Conditions", fill="black", font=('Helvetica 10'))
     canvas.create_line(150, 608, 795, 608)
             # canvas.create_text(280, 640, text= ""+est_str7.get(), fill="black", font=('Helvetica 10')) 
-    T = Text(canvas, height=3, width=90, font=('Helvetica 10'),borderwidth=0)
-    T.insert(END, podata[51])
-    T_window = canvas.create_window(155, 612, anchor="nw", window=T)
+    PT = Text(canvas, height=3, width=90, font=('Helvetica 10'),borderwidth=0)
+    PT.insert('1.0', pord_str8.get('1.0', END))
+    PT_window = canvas.create_window(155, 612, anchor="nw", window=PT)
 
     canvas.create_text(280, 670, text="Page footer text goes here...", fill="black", font=('Helvetica 10'))
     canvas.create_text(720, 670, text="Page 1 of 1", fill="black", font=('Helvetica 10'))          
