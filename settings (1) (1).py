@@ -332,6 +332,7 @@ def mainpage():
     pord_text7 = pord_str7.get()
     pord_predefind = pord_str8.get(1.0,END)
     combo = em_menu.get()
+    textfld = memaiframe.get(1.0,END) 
 
    
 
@@ -346,26 +347,26 @@ def mainpage():
     if not i:
       if filename == "":
         print(12)
-        sql = 'insert into company(name, address, email,salestaxno,currency,currencysign,currsignplace,  decimalseperator,excurrency,dateformat,exdate,taxtype,printimageornot,tax1name,tax1rate,printtax1,  tax2name,tax2rate,printtax2,attachment_file_type,miscellanoustab_cbutton1,miscellanoustab_cbutton2,miscellanoustab_cbutton3,miscellanoustab_cbutton4,miscellanoustab_cbutton5,miscellanoustab_cbutton6,Estimate_prefix,Customizeestimatetextlabels,Customizeestimatetextlabels1,Customizeestimatetextlabels2,Customizeestimatetextlabels3,Customizeestimatetextlabels4,Customizeestimatetextlabels5,Defaultestimatetemplate,Startingestimatenumber,Predefinedtextforestimates,adv_Selectedtemplatepreview,est_Headerboxbackgroundcolor,porder_prefix,headrebox_color,starting_porderno,text_label1,text_label2,text_label3,text_label4,text_label5,text_label6,text_label7,predefindterms_porder,email_template) values(%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
-        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo)
+        sql = 'insert into company(name, address, email,salestaxno,currency,currencysign,currsignplace,  decimalseperator,excurrency,dateformat,exdate,taxtype,printimageornot,tax1name,tax1rate,printtax1,  tax2name,tax2rate,printtax2,attachment_file_type,miscellanoustab_cbutton1,miscellanoustab_cbutton2,miscellanoustab_cbutton3,miscellanoustab_cbutton4,miscellanoustab_cbutton5,miscellanoustab_cbutton6,Estimate_prefix,Customizeestimatetextlabels,Customizeestimatetextlabels1,Customizeestimatetextlabels2,Customizeestimatetextlabels3,Customizeestimatetextlabels4,Customizeestimatetextlabels5,Defaultestimatetemplate,Startingestimatenumber,Predefinedtextforestimates,adv_Selectedtemplatepreview,est_Headerboxbackgroundcolor,porder_prefix,headrebox_color,starting_porderno,text_label1,text_label2,text_label3,text_label4,text_label5,text_label6,text_label7,predefindterms_porder,email_template,text_field) values(%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo,textfld)
         fbcursor.execute(sql, val)
         fbilldb.commit()
       else:
         shutil.copyfile(filename, os.getcwd()+'/images/'+filename.split('/')[-1])
-        sql = 'insert into company(name, address, email,salestaxno,currency,currencysign,currsignplace,  decimalseperator,excurrency,dateformat,exdate,taxtype,printimageornot,tax1name,tax1rate,printtax1,  tax2name,tax2rate,printtax2,image,attachment_file_type,miscellanoustab_cbutton1,miscellanoustab_cbutton2,miscellanoustab_cbutton3,miscellanoustab_cbutton4,miscellanoustab_cbutton5,miscellanoustab_cbutton6,Estimate_prefix,Customizeestimatetextlabels,Customizeestimatetextlabels1,Customizeestimatetextlabels2,Customizeestimatetextlabels3,Customizeestimatetextlabels4,Customizeestimatetextlabels5,Defaultestimatetemplate,Startingestimatenumber,Predefinedtextforestimates,adv_Selectedtemplatepreview,est_Headerboxbackgroundcolor,porder_prefix,headrebox_color,starting_porderno,text_label1,text_label2,text_label3,text_label4,text_label5,text_label6,text_label7,predefindterms_porder,email_template) values(%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
-        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,filename.split('/')[-1],radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo)
+        sql = 'insert into company(name, address, email,salestaxno,currency,currencysign,currsignplace,  decimalseperator,excurrency,dateformat,exdate,taxtype,printimageornot,tax1name,tax1rate,printtax1,  tax2name,tax2rate,printtax2,image,attachment_file_type,miscellanoustab_cbutton1,miscellanoustab_cbutton2,miscellanoustab_cbutton3,miscellanoustab_cbutton4,miscellanoustab_cbutton5,miscellanoustab_cbutton6,Estimate_prefix,Customizeestimatetextlabels,Customizeestimatetextlabels1,Customizeestimatetextlabels2,Customizeestimatetextlabels3,Customizeestimatetextlabels4,Customizeestimatetextlabels5,Defaultestimatetemplate,Startingestimatenumber,Predefinedtextforestimates,adv_Selectedtemplatepreview,est_Headerboxbackgroundcolor,porder_prefix,headrebox_color,starting_porderno,text_label1,text_label2,text_label3,text_label4,text_label5,text_label6,text_label7,predefindterms_porder,email_template,text_field) values(%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,filename.split('/')[-1],radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo,textfld)
         fbcursor.execute(sql, val)
         fbilldb.commit()
     else:
       if filename == "":
-        sql = "update company set name=%s, address=%s, email=%s,salestaxno=%s,currency=%s,currencysign=%s,  currsignplace=%s,decimalseperator=%s,excurrency=%s,dateformat=%s,exdate=%s,taxtype=%s,  printimageornot=%s,tax1name=%s,tax1rate=%s,printtax1=%s,tax2name=%s,tax2rate=%s,printtax2=%s,attachment_file_type=%s,miscellanoustab_cbutton1=%s,miscellanoustab_cbutton2=%s,miscellanoustab_cbutton3=%s,miscellanoustab_cbutton4=%s,miscellanoustab_cbutton5=%s,miscellanoustab_cbutton6=%s,Estimate_prefix=%s,Customizeestimatetextlabels=%s,Customizeestimatetextlabels1=%s,Customizeestimatetextlabels2=%s,Customizeestimatetextlabels3=%s,Customizeestimatetextlabels4=%s,Customizeestimatetextlabels5=%s,Defaultestimatetemplate=%s,Startingestimatenumber=%s,Predefinedtextforestimates=%s,adv_Selectedtemplatepreview=%s,est_Headerboxbackgroundcolor=%s,porder_prefix=%s,headrebox_color=%s,starting_porderno=%s,text_label1=%s,text_label2=%s,text_label3=%s,text_label4=%s,text_label5=%s,text_label6=%s,text_label7=%s,predefindterms_porder=%s,email_template=%s"
-        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo)
+        sql = "update company set name=%s, address=%s, email=%s,salestaxno=%s,currency=%s,currencysign=%s,  currsignplace=%s,decimalseperator=%s,excurrency=%s,dateformat=%s,exdate=%s,taxtype=%s,  printimageornot=%s,tax1name=%s,tax1rate=%s,printtax1=%s,tax2name=%s,tax2rate=%s,printtax2=%s,attachment_file_type=%s,miscellanoustab_cbutton1=%s,miscellanoustab_cbutton2=%s,miscellanoustab_cbutton3=%s,miscellanoustab_cbutton4=%s,miscellanoustab_cbutton5=%s,miscellanoustab_cbutton6=%s,Estimate_prefix=%s,Customizeestimatetextlabels=%s,Customizeestimatetextlabels1=%s,Customizeestimatetextlabels2=%s,Customizeestimatetextlabels3=%s,Customizeestimatetextlabels4=%s,Customizeestimatetextlabels5=%s,Defaultestimatetemplate=%s,Startingestimatenumber=%s,Predefinedtextforestimates=%s,adv_Selectedtemplatepreview=%s,est_Headerboxbackgroundcolor=%s,porder_prefix=%s,headrebox_color=%s,starting_porderno=%s,text_label1=%s,text_label2=%s,text_label3=%s,text_label4=%s,text_label5=%s,text_label6=%s,text_label7=%s,predefindterms_porder=%s,email_template=%s,text_field=%s"
+        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo,textfld)
         fbcursor.execute(sql, val)
         fbilldb.commit()
       else:
         shutil.copyfile(filename, os.getcwd()+'/images/'+filename.split('/')[-1])
-        sql = "update company set name=%s, address=%s, email=%s,salestaxno=%s,currency=%s,currencysign=%s,  currsignplace=%s,decimalseperator=%s,excurrency=%s,dateformat=%s,exdate=%s,taxtype=%s,  printimageornot=%s,tax1name=%s,tax1rate=%s,printtax1=%s,tax2name=%s,tax2rate=%s,printtax2=%s,image=%s,attachment_file_type=%s,miscellanoustab_cbutton1=%s,miscellanoustab_cbutton2=%s,miscellanoustab_cbutton3=%s,miscellanoustab_cbutton4=%s,miscellanoustab_cbutton5=%s,miscellanoustab_cbutton6=%s,Estimate_prefix=%s,Customizeestimatetextlabels=%s,Customizeestimatetextlabels1=%s,Customizeestimatetextlabels2=%s,Customizeestimatetextlabels3=%s,Customizeestimatetextlabels4=%s,Customizeestimatetextlabels5=%s,Defaultestimatetemplate=%s,Startingestimatenumber=%s,Predefinedtextforestimates=%s,adv_Selectedtemplatepreview=%s,est_Headerboxbackgroundcolor=%s,porder_prefix=%s,headrebox_color=%s,starting_porderno=%s,text_label1=%s,text_label2=%s,text_label3=%s,text_label4=%s,text_label5=%s,text_label6=%s,text_label7=%s,predefindterms_porder=%s,email_template=%s"
-        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,filename.split('/')[-1],radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo)
+        sql = "update company set name=%s, address=%s, email=%s,salestaxno=%s,currency=%s,currencysign=%s,  currsignplace=%s,decimalseperator=%s,excurrency=%s,dateformat=%s,exdate=%s,taxtype=%s,  printimageornot=%s,tax1name=%s,tax1rate=%s,printtax1=%s,tax2name=%s,tax2rate=%s,printtax2=%s,image=%s,attachment_file_type=%s,miscellanoustab_cbutton1=%s,miscellanoustab_cbutton2=%s,miscellanoustab_cbutton3=%s,miscellanoustab_cbutton4=%s,miscellanoustab_cbutton5=%s,miscellanoustab_cbutton6=%s,Estimate_prefix=%s,Customizeestimatetextlabels=%s,Customizeestimatetextlabels1=%s,Customizeestimatetextlabels2=%s,Customizeestimatetextlabels3=%s,Customizeestimatetextlabels4=%s,Customizeestimatetextlabels5=%s,Defaultestimatetemplate=%s,Startingestimatenumber=%s,Predefinedtextforestimates=%s,adv_Selectedtemplatepreview=%s,est_Headerboxbackgroundcolor=%s,porder_prefix=%s,headrebox_color=%s,starting_porderno=%s,text_label1=%s,text_label2=%s,text_label3=%s,text_label4=%s,text_label5=%s,text_label6=%s,text_label7=%s,predefindterms_porder=%s,email_template=%s,text_field=%s"
+        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,filename.split('/')[-1],radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo,textfld)
         fbcursor.execute(sql, val)
         fbilldb.commit()
       
@@ -7368,7 +7369,9 @@ def mainpage():
       elif hyper == "telnet:":
         hyp= Entry(top,width=35)
         hyp.place(x=90,y=55)
-        hyp.insert(END,  "telnet:") 
+        hyp.insert(END,  "telnet:")
+
+
 
     
 
@@ -7454,11 +7457,11 @@ def mainpage():
   # scrollbar = Scrollbar(eighttab)
   # scrollbar.place(x=1048, y=120, height=396)
   # meframe = StringVar()
-  memaiframe=scrolledtext.Text(emailmessage_Frame, width=1060, bg="white",undo=True,height=430)
+  memaiframe=scrolledtext.Text(emailmessage_Frame, width=130, bg="white",undo=True,height=430)
   if not emdata:
     pass
   else:
-    memaiframe.insert('1.0', emdata[51])
+    memaiframe.insert('1.0', emdata[53])
   memaiframe.place(y=28,x=9)
 
   # if  not emdata:
@@ -7510,7 +7513,7 @@ def mainpage():
   btn12=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=center,command=align_center)
   btn12.place(x=385, y=1)
 
-  btn13=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=hyperlink,command=open)
+  btn13=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=hyperlink,command=lambda:memaiframe.event_generate('<Control k>'))
   btn13.place(x=420, y=1)
         
   btn14=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=remove,command=lambda :memaiframe.delete(0.0,END))
@@ -7525,7 +7528,7 @@ def mainpage():
 
   size_variable=IntVar()
   compo = ttk.Combobox(emailmessage_Frame, width=14,textvariable=size_variable,values=tuple(range(10,80)))
-  compo['values'] =('10','12','14','16','18','20','22','24','26','28')
+  compo['values'] =('12','14','16','18','20','22','24','26','28','30','32','34','36','38','40','42','46','48','50')
   compo.place(x=600, y=5)
   compo.current(4)
 
@@ -7557,7 +7560,7 @@ def mainpage():
   def select(event):
     memaiframe.insert('1.0',lbx01.get(ANCHOR))
 
-  attachlbframe=LabelFrame(eighttab,text="placeholders(drag or double click to insert", height=500, width=233)
+  attachlbframe=LabelFrame(eighttab,text="placeholders(drag or double click to insert)", height=500, width=233)
   attachlbframe.place(x=1080, y=22)
   # label_po = Label(eighttab,text="{{Company_Name}}",font="TimesNewRoman 12 ")
   # label_po.place(x=1090,y=46)
