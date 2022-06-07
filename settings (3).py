@@ -42,7 +42,7 @@ from tkinter.scrolledtext import ScrolledText
 
 
 fbilldb = mysql.connector.connect(
-    host="localhost", user="root", password="", database="fbillingsintgrtd", port="3306"
+    host="localhost", user="root", password="", database="fbillingsintgrtd5(3)", port="3306"
 )
 fbcursor = fbilldb.cursor()
 
@@ -10611,7 +10611,7 @@ def mainpage():
 
   size_variable=IntVar()
   compo = ttk.Combobox(emailmessage_Frame, width=14,textvariable=size_variable,values=tuple(range(10,80)))
-  compo['values'] =('11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28')
+  compo['values'] =('11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','20','30','31','32','33','34','35')
   compo.place(x=600, y=5)
   compo.current(4)
 
@@ -11021,7 +11021,7 @@ def mainpage():
 
   paidim=LabelFrame(ninetab,text="PAID Image for Invoices (max: 40mm X 25mm)", height=250, width=300)
   paidim.place(x=500, y=100)
-    
+  filename_btn=""  
   def upload_btnimg():
     global btnimg,filename_btn
     f_types =[('Png files','*.png'),('Jpg Files', '*.jpg')]
@@ -11281,7 +11281,7 @@ def mainpage():
 
   sql = "select * from company"
   fbcursor.execute(sql)
-  podata1 = fbcursor.fetchone()
+  podata = fbcursor.fetchone()
 
     
   frame = Frame(tentab, width=953, height=300)
@@ -11507,6 +11507,10 @@ def mainpage():
   canvas.create_text(720, 670, text="Page 1 of 1", fill="black", font=('Helvetica 10')) 
 
   def refresh():
+    sql = "select * from company"
+    fbcursor.execute(sql)
+    podata1 = fbcursor.fetchone()
+
     frame = Frame(tentab, width=953, height=300)
     frame.pack(expand=True, fill=BOTH)
     frame.place(x=247,y=90)
@@ -11522,7 +11526,7 @@ def mainpage():
     canvas.create_rectangle(100, 8, 850, 687 , outline='yellow',fill='white')
     canvas.create_text(500, 25, text="Title text goes here...", fill="black", font=('Helvetica 10'))
     try:
-      pord_image = Image.open("images/"+podata[13])
+      pord_image = Image.open("images/"+podata1[13])
       pord_resize_image = pord_image.resize((200,100))
       pord_image = ImageTk.PhotoImage(pord_resize_image)
 
@@ -11545,7 +11549,7 @@ def mainpage():
             # canvas.create_text(700, 200, text=""+caddent.get('1.0', 'end-1c'), fill="black", font=('Helvetica 10'), width=125)
     PT_address = Text(canvas, height=5, width=40, font=('Helvetica 10'),borderwidth=0)
     PT_address.tag_configure('tag_name',justify='right')
-    PT_address.insert('1.0', podata[2])
+    PT_address.insert('1.0', podata1[2])
     PT_address.tag_add('tag_name','1.0', 'end')
     PT_address_window = canvas.create_window(520, 80, anchor="nw", window=PT_address)
     canvas.create_text(695, 180, text=" "+comsalestax.get(), fill="black", font=('Helvetica 10'))

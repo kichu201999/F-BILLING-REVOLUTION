@@ -329,7 +329,7 @@ def mainpage():
     est_spin1 = spin1.get()
     adv_default = adv_win_menu8.get()
     pord_prefix = prefix_str.get()
-    pord_spin = spin2.get()
+    pord_spin = pspin1.get()
     pord_header = pwin_menu.get()
     pord_text1 = pord_str1.get()
     pord_text2 = pord_str2.get()
@@ -356,25 +356,25 @@ def mainpage():
       if filename == "":
         print(12)
         sql = 'insert into company(name, address, email,salestaxno,currency,currencysign,currsignplace,  decimalseperator,excurrency,dateformat,exdate,taxtype,printimageornot,tax1name,tax1rate,printtax1,  tax2name,tax2rate,printtax2,attachment_file_type,miscellanoustab_cbutton1,miscellanoustab_cbutton2,miscellanoustab_cbutton3,miscellanoustab_cbutton4,miscellanoustab_cbutton5,miscellanoustab_cbutton6,Estimate_prefix,Customizeestimatetextlabels,Customizeestimatetextlabels1,Customizeestimatetextlabels2,Customizeestimatetextlabels3,Customizeestimatetextlabels4,Customizeestimatetextlabels5,Defaultestimatetemplate,Startingestimatenumber,Predefinedtextforestimates,adv_Selectedtemplatepreview,est_Headerboxbackgroundcolor,porder_prefix,headrebox_color,starting_porderno,text_label1,text_label2,text_label3,text_label4,text_label5,text_label6,text_label7,predefindterms_porder,email_template,text_field) values(%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
-        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo,textfld)
+        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_header,pord_spin,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo,textfld)
         fbcursor.execute(sql, val)
         fbilldb.commit()
       else:
         shutil.copyfile(filename, os.getcwd()+'/images/'+filename.split('/')[-1])
         sql = 'insert into company(name, address, email,salestaxno,currency,currencysign,currsignplace,  decimalseperator,excurrency,dateformat,exdate,taxtype,printimageornot,tax1name,tax1rate,printtax1,  tax2name,tax2rate,printtax2,image,attachment_file_type,miscellanoustab_cbutton1,miscellanoustab_cbutton2,miscellanoustab_cbutton3,miscellanoustab_cbutton4,miscellanoustab_cbutton5,miscellanoustab_cbutton6,Estimate_prefix,Customizeestimatetextlabels,Customizeestimatetextlabels1,Customizeestimatetextlabels2,Customizeestimatetextlabels3,Customizeestimatetextlabels4,Customizeestimatetextlabels5,Defaultestimatetemplate,Startingestimatenumber,Predefinedtextforestimates,adv_Selectedtemplatepreview,est_Headerboxbackgroundcolor,porder_prefix,headrebox_color,starting_porderno,text_label1,text_label2,text_label3,text_label4,text_label5,text_label6,text_label7,predefindterms_porder,email_template,text_field) values(%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
-        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,filename.split('/')[-1],radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo,textfld)
+        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,filename.split('/')[-1],radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_header,pord_spin,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo,textfld)
         fbcursor.execute(sql, val)
         fbilldb.commit()
     else:
       if filename == "":
         sql = "update company set name=%s, address=%s, email=%s,salestaxno=%s,currency=%s,currencysign=%s,  currsignplace=%s,decimalseperator=%s,excurrency=%s,dateformat=%s,exdate=%s,taxtype=%s,  printimageornot=%s,tax1name=%s,tax1rate=%s,printtax1=%s,tax2name=%s,tax2rate=%s,printtax2=%s,attachment_file_type=%s,miscellanoustab_cbutton1=%s,miscellanoustab_cbutton2=%s,miscellanoustab_cbutton3=%s,miscellanoustab_cbutton4=%s,miscellanoustab_cbutton5=%s,miscellanoustab_cbutton6=%s,Estimate_prefix=%s,Customizeestimatetextlabels=%s,Customizeestimatetextlabels1=%s,Customizeestimatetextlabels2=%s,Customizeestimatetextlabels3=%s,Customizeestimatetextlabels4=%s,Customizeestimatetextlabels5=%s,Defaultestimatetemplate=%s,Startingestimatenumber=%s,Predefinedtextforestimates=%s,adv_Selectedtemplatepreview=%s,est_Headerboxbackgroundcolor=%s,porder_prefix=%s,headrebox_color=%s,starting_porderno=%s,text_label1=%s,text_label2=%s,text_label3=%s,text_label4=%s,text_label5=%s,text_label6=%s,text_label7=%s,predefindterms_porder=%s,email_template=%s,text_field=%s"
-        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo,textfld)
+        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_header,pord_spin,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo,textfld)
         fbcursor.execute(sql, val)
         fbilldb.commit()
       else:
         shutil.copyfile(filename, os.getcwd()+'/images/'+filename.split('/')[-1])
         sql = "update company set name=%s, address=%s, email=%s,salestaxno=%s,currency=%s,currencysign=%s,  currsignplace=%s,decimalseperator=%s,excurrency=%s,dateformat=%s,exdate=%s,taxtype=%s,  printimageornot=%s,tax1name=%s,tax1rate=%s,printtax1=%s,tax2name=%s,tax2rate=%s,printtax2=%s,image=%s,attachment_file_type=%s,miscellanoustab_cbutton1=%s,miscellanoustab_cbutton2=%s,miscellanoustab_cbutton3=%s,miscellanoustab_cbutton4=%s,miscellanoustab_cbutton5=%s,miscellanoustab_cbutton6=%s,Estimate_prefix=%s,Customizeestimatetextlabels=%s,Customizeestimatetextlabels1=%s,Customizeestimatetextlabels2=%s,Customizeestimatetextlabels3=%s,Customizeestimatetextlabels4=%s,Customizeestimatetextlabels5=%s,Defaultestimatetemplate=%s,Startingestimatenumber=%s,Predefinedtextforestimates=%s,adv_Selectedtemplatepreview=%s,est_Headerboxbackgroundcolor=%s,porder_prefix=%s,headrebox_color=%s,starting_porderno=%s,text_label1=%s,text_label2=%s,text_label3=%s,text_label4=%s,text_label5=%s,text_label6=%s,text_label7=%s,predefindterms_porder=%s,email_template=%s,text_field=%s"
-        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,filename.split('/')[-1],radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_spin,pord_header,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo,textfld)
+        val = (company_name,company_address,company_mail,company_salestax,currency,currencysign,  currencysign_placement,decimal_sepator,currency_example,date_format,example_dateformat,tax,printimage,  tax1name,tax1rate,printtax1,tax2name,tax2rate,printtax2,filename.split('/')[-1],radiobut,cbut1,cbut2,cbut3,cbut4,cbut5,cbut6,est_prefix,est_text1,est_text2,est_text3,est_text4,est_text5,est_text6,est_default,est_spin1,est_predefined,adv_default,est_header,pord_prefix,pord_header,pord_spin,pord_text1,pord_text2,pord_text3,pord_text4,pord_text5,pord_text6,pord_text7,pord_predefind,combo,textfld)
         fbcursor.execute(sql, val)
         fbilldb.commit()
       
@@ -7284,33 +7284,33 @@ def mainpage():
 
 
  
-  current_font_size = 12
-  current_font_family = "Arial"
+  # current_font_size = 12
+  # current_font_family = "Arial"
 
-  def change_font(event=None):
-      global current_font_family
-      current_font_family = font_family.get()
-      memaiframe.configure(font=(current_font_family, current_font_size))
+  # def change_font(event=None):
+  #     global current_font_family
+  #     current_font_family = font_family.get()
+  #     memaiframe.configure(font=(current_font_family, current_font_size))
 
-  #change font size
-  def change_font_size(event=None):
-      global current_font_size
-      current_font_size = font_size.get()
-      memaiframe.configure(font=(current_font_family, current_font_size))
+  # #change font size
+  # def change_font_size(event=None):
+  #     global current_font_size
+  #     current_font_size = font_size.get()
+  #     memaiframe.configure(font=(current_font_family, current_font_size))
 
        
 
-  # fontSize=12
-  # fontStyle='arial'
-  # def font_style(event):
-  #   global fontStyle
-  #   fontStyle=font_family__variable.get()
-  #   memaiframe.config(font=(fontStyle,fontSize))
+  fontSize=17
+  fontStyle='arial'
+  def font_style(event):
+    global fontStyle
+    fontStyle=font_family__variable.get()
+    memaiframe.config(font=(fontStyle,fontSize))
 
-  # def font_size(event):
-  #   global fontSize
-  #   fontSize=size_variable.get()
-  #   memaiframe.config(font=(fontStyle,fontSize))
+  def font_size(event):
+    global fontSize
+    fontSize=size_variable.get()
+    memaiframe.config(font=(fontStyle,fontSize))
 
   def bold_text():
     bold_font = font.Font(memaiframe, memaiframe.cget("font"))
@@ -7402,21 +7402,21 @@ def mainpage():
 
 
   def align_right():
-    data=memaiframe.get(0.0,END)
+    data=memaiframe.get(1.0, "end")
     memaiframe.tag_config('right',justify=RIGHT)
-    memaiframe.delete(0.0,END)
+    memaiframe.delete(1.0,END)
     memaiframe.insert(INSERT,data,'right')
 
   def align_left():
-    data=memaiframe.get(0.0,END)
+    data=memaiframe.get(1.0, 'end')
     memaiframe.tag_config('left',justify=LEFT)
-    memaiframe.delete(0.0,END)
+    memaiframe.delete(1.0,END)
     memaiframe.insert(INSERT,data,'left')
 
   def align_center():
-    data=memaiframe.get(0.0,END)
+    data=memaiframe.get(1.0,END)
     memaiframe.tag_config('center',justify=CENTER)
-    memaiframe.delete(0.0,END)
+    memaiframe.delete(1.0,END)
     memaiframe.insert(INSERT,data,'center')
 
   # def add_link():
@@ -7546,13 +7546,22 @@ def mainpage():
   style.theme_use('default')
   style.configure('TNotebook.Tab', background="#999999", width=78, padding=10)
   mess_Notebook = ttk.Notebook(eighttab)
-  emailmessage_Frame = Frame(mess_Notebook, height=430, width=1060)
+  emailmessage_Frame = Frame(mess_Notebook, height=200, width=1060)
   # htmlsourse_Frame = Frame(mess_Notebook, height=430, width=1060)
   mess_Notebook.add(emailmessage_Frame, text="E-mail message")
   # mess_Notebook.add(htmlsourse_Frame)
   mess_Notebook.place(x=5, y=50)
 
+  # meframe = StringVar()
+  # memaiframe=ScrolledText(emailmessage_Frame, width=130, bg="white",undo=True,height=400)
+  # if not emdata:
+  #   pass
+  # else:
+  #   memaiframe.insert('1.0', emdata[53])
+  # memaiframe.place(y=28,x=9)
 
+  # scrollbar = Scrollbar(eighttab)
+  # scrollbar.place(x=1048, y=120, height=396)
  
   # meframe = StringVar()
   # memaiframe=ScrolledText(emailmessage_Frame, width=130, bg="white",undo=True,height=400)
@@ -7560,11 +7569,11 @@ def mainpage():
   #   pass
   # else:
   #   memaiframe.insert('1.0', emdata[53])
-  # # memaiframe.place(y=28,x=9)
+  # memaiframe.place(y=28,x=9)
   # memaiframe.grid(row=2,column=1)
 
-  tool_bar = Label(emailmessage_Frame,width=1060)
-  tool_bar.pack(pady=5,padx=9)
+  # tool_bar = Label(emailmessage_Frame,width=1060)
+  # tool_bar.pack(pady=5,padx=9)
 
   # memaiframe.grid(row=1, column=1, padx=5, pady=5,sticky='nsew')
 
@@ -7573,103 +7582,109 @@ def mainpage():
   # else:
   #   print(emdata)
   #   memaiframe.insert(0, emdata[3])
-  # scrollbar = Scrollbar(eighttab)
-  # scrollbar.place(x=1048, y=120, height=396)
-  # memaiframe=Text(emailmessage_Frame,yscrollcommand=scrollbar.set,font=('arial 16'),undo=True,width=80,height=80)
-  # scrollbar.config(command=memaiframe.yview)
-  # memaiframe.pack(padx=0,pady=28,expand=False, fill=tk.Y)
+  scrollbar1 = Scrollbar(eighttab,orient=VERTICAL)
+  scrollbar2= Scrollbar(eighttab,orient=HORIZONTAL)
+ 
+
+  memaiframe=Text(emailmessage_Frame,  yscrollcommand=scrollbar1.set, xscrollcommand=scrollbar2.set,font=('arial 17'),undo=True,width=80,height=80)
+  scrollbar1.config(command=memaiframe.yview)
+  scrollbar1.place(x =1040, y=120, height=396)
+  scrollbar2.config(command=memaiframe.xview)
+  scrollbar2.place(x=9,y=510, width=1050)
+
+  memaiframe.pack(padx=0,pady=28,expand=True, fill=BOTH)
 
 
 
 
 
 
-  btn1=Button(tool_bar,width=20,height=20,compound = LEFT,image=selectall,command=lambda :memaiframe.event_generate('<Control a>'))
+  btn1=Button(emailmessage_Frame,width=20,height=20,compound = LEFT,image=selectall,command=lambda :memaiframe.event_generate('<Control a>'))
   btn1.place(x=0, y=1)
 
         
-  # btn2=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=cut,command=lambda :memaiframe.event_generate('<Control x>'))
-  # btn2.place(x=36, y=1)
+  btn2=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=cut,command=lambda :memaiframe.event_generate('<Control x>'))
+  btn2.place(x=36, y=1)   
 
-  # btn3=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=copy,command=lambda :memaiframe.event_generate('<Control c>'))
-  # btn3.place(x=73, y=1)
+  btn3=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=copy,command=lambda :memaiframe.event_generate('<Control c>'))
+  btn3.place(x=73, y=1)
 
-  # btn4=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=paste,command=lambda :memaiframe.event_generate('<Control v>'))
-  # btn4.place(x=105, y=1)
+  btn4=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=paste,command=lambda :memaiframe.event_generate('<Control v>'))
+  btn4.place(x=105, y=1)
 
-  # btn5=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=undo, command=lambda:memaiframe.event_generate("<<Undo>>"))
-  # btn5.place(x=140, y=1)
+  btn5=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=undo, command=lambda:memaiframe.event_generate("<<Undo>>"))
+  btn5.place(x=140, y=1)
 
-  # btn6=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=redo, command=lambda:memaiframe.event_generate("<<Redo>>"))
-  # btn6.place(x=175, y=1)
+  btn6=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=redo, command=lambda:memaiframe.event_generate("<<Redo>>"))
+  btn6.place(x=175, y=1)
 
-  # btn7=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=bold,command=bold_text)
-  # btn7.place(x=210, y=1)
+  btn7=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=bold,command=bold_text)
+  btn7.place(x=210, y=1)
 
-  # btn8=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=italics,command=italic_text)
-  # btn8.place(x=245, y=1)
+  btn8=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=italics,command=italic_text)
+  btn8.place(x=245, y=1)
 
-  # btn9=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=underline,command=underline_text)
-  # btn9.place(x=280, y=1)
+  btn9=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=underline,command=underline_text)
+  btn9.place(x=280, y=1)
 
-  # btn10=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=left,command=align_left)
-  # btn10.place(x=315, y=1)
+  btn10=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=left,command=align_left)
+  btn10.place(x=315, y=1)
 
-  # btn11=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=right,command=align_right)
-  # btn11.place(x=350, y=1)
+  btn11=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=right,command=align_right)
+  btn11.place(x=350, y=1)
 
-  # btn12=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=center,command=align_center)
-  # btn12.place(x=385, y=1)
+  btn12=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=center,command=align_center)
+  btn12.place(x=385, y=1)
 
-  # # btn13=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=hyperlink,command=open)
-  # # btn13.place(x=420, y=1)
+  # btn13=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=hyperlink,command=open)
+  # btn13.place(x=420, y=1)
         
-  # btn14=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=remove,command=lambda :memaiframe.delete(0.0,END))
-  # btn14.place(x=420, y=1)
+  btn14=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=remove,command=lambda :memaiframe.delete(0.0,END))
+  btn14.place(x=420, y=1)
 
-  # btn15=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=color,command=color_select)
-  # btn15.place(x=455, y=1)
+  btn15=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=color,command=color_select)
+  btn15.place(x=455, y=1)
 
   # btn16=Button(emailmessage_Frame,width=31,height=23,compound = LEFT,image=save,command=save_file)
   # btn16.place(x=525, y=1)
  
 
-  # size_variable=IntVar()
-  # compo = ttk.Combobox(emailmessage_Frame, width=14,textvariable=size_variable,values=tuple(range(10,80)))
-  # compo['values'] =('10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','50')
-  # compo.place(x=600, y=5)
-  # compo.current(4)
+  size_variable=IntVar()
+  compo = ttk.Combobox(emailmessage_Frame, width=14,textvariable=size_variable,values=tuple(range(10,80)))
+  compo['values'] =('10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','50')
+  compo.place(x=600, y=5)
+  compo.current(4)
 
-  # compo.bind('<<ComboboxSelected>>',font_size)
-
-
-  # font_families=font.families()
-  # font_family__variable=StringVar()
-  #combo =ttk.Combobox(emailmessage_Frame, width=18,textvariable=font_family__variable,values=font_families)
-  #combo.place(x=720, y=5)
-  #combo.current(font_families.index('Arial'))
-
-  #combo.bind('<<ComboboxSelected>>',font_style)
+  compo.bind('<<ComboboxSelected>>',font_size)
 
 
-  font_tuple = tk.font.families()             #contains all font families names
-  font_family = tk.StringVar()            #string variable for storing value of font options from user
-  font_box = ttk.Combobox(tool_bar,width = 5,textvariable = font_family,state = "readonly") #combobox
-  font_box["values"] = font_tuple
-  font_box.current(font_tuple.index("Arial"))
-  font_box.grid(row = 0,column =8,padx = 5)
-  # font_box.place(x=600,y=5)
+  font_families=font.families()
+  font_family__variable=StringVar()
+  combo =ttk.Combobox(emailmessage_Frame, width=18,textvariable=font_family__variable,values=font_families)
+  combo.place(x=720, y=5)
+  combo.current(font_families.index('Arial'))
+
+  combo.bind('<<ComboboxSelected>>',font_style)
 
 
-  font_size = tk.IntVar()
-  font_size_box = ttk.Combobox(tool_bar,width = 10,textvariable = font_size,state = "readonly")
-  font_size_box["values"] = tuple(range(2,120,4))
-  font_size_box.current(2)
-  font_size_box.grid(row = 0, column =15,padx = 5)
+  # font_tuple = tk.font.families()             #contains all font families names
+  # font_family = tk.StringVar()            #string variable for storing value of font options from user
+  # font_box = ttk.Combobox(memaiframe,width = 5,textvariable = font_family,state = "readonly") #combobox
+  # font_box["values"] = font_tuple
+  # font_box.current(font_tuple.index("Arial"))
+  # font_box.grid(row = 0,column =8,padx = 5)
+  # # font_box.place(x=600,y=5)
+
+
+  # font_size = tk.IntVar()
+  # font_size_box = ttk.Combobox(memaiframe,width = 10,textvariable = font_size,state = "readonly")
+  # font_size_box["values"] = tuple(range(2,120,4))
+  # font_size_box.current(2)
+  # font_size_box.grid(row = 0, column =15,padx = 5)
   # font_size_box(x=700,y=5)
 
-  font_box.bind("<<ComboboxSelected>>", change_font)
-  font_size_box.bind("<<ComboboxSelected>>", change_font_size)
+  # font_box.bind("<<ComboboxSelected>>", change_font)
+  # font_size_box.bind("<<ComboboxSelected>>", change_font_size)
 
  
 
@@ -8103,10 +8118,11 @@ def mainpage():
     btlogo.place(x=505,y=120)
     
   try:
-    image = Image.open("images/"+ninetab[19])
+  
+    image = Image.open("images/"+padata[19])
     resize_image = image.resize((280, 160))
     image = ImageTk.PhotoImage(resize_image)
-    btlogoi = Button(ninetab,width=280,height=160,image="image")
+    btlogoi = Button(ninetab,width=280,height=160,image=image)
     btlogoi.place(x=505,y=120)
     btlogoi.photo = image
   except:
@@ -8131,7 +8147,8 @@ def mainpage():
 
   butnimg=LabelFrame(ninetab,text="PayPal Image for Invoices (max: 40mm X 10mm)", height=130, width=300)
   butnimg.place(x=500, y=370)
-    
+
+
   def upload_fileimg_logo():
     global logo_img,filename_logo
     f_types =[('Png files','*.png'),('Jpg Files', '*.jpg')]
@@ -8142,15 +8159,15 @@ def mainpage():
     logo_img = ImageTk.PhotoImage(resize_image)
     # b2 = Button(secondtab,image=img)
     # b2.place(x=130, y=80)
-    
+
     btlogo = Button(ninetab,width=280,height=55,image=logo_img)
     btlogo.place(x=506,y=390)
 
   try:
-    image = Image.open("images/"+ninetab[18])
-    resize_image = image.resize((280, 55))
+    image = Image.open("images/"+padata[18])
+    resize_image = image.resize((280, 80))
     image = ImageTk.PhotoImage(resize_image)
-    bt_logo = Button(ninetab,width=280,height=55,image="image")
+    bt_logo = Button(ninetab,width=280,height=55,image=image)
     bt_logo.place(x=506,y=390)
     bt_logo.photo = image
   except:
@@ -8204,42 +8221,38 @@ def mainpage():
   ver1 = Label(tentab,text="Starting purchase order number")
   ver1.place(x=15,y=75)
 
-  def spincall(input):
-        
+  def pcallback(input):
+      
     if input.isdigit():
-      print(input)
-      return True
-
-    elif input is  "":
-      print(input)
-      return True
-
+        print(input)
+        return True
+                          
+    elif input is "":
+        print(input)
+        return True
+  
     else:
-      print(input)
-      return False
-    
+        print(input)
+        return False
 
-  spin2 = Spinbox(tentab,from_=0,to=1000000,width=16)
-  regi = tentab.register(spincall)
-
-  spin2.config(validate = "key",
-               validatecommand = (regi, '%S'))
+  pspin1 = Spinbox(tentab,from_=0,to=1000000,width=15)
+  reg = tentab.register(pcallback)
+  
+  pspin1.config(validate ="key", 
+         validatecommand =(reg, '%S'))
   if not podata:
     pass
   else:
-    spin2.delete(0,END)
-    spin2.insert(0,podata[43])
-    spin2.place(x=16,y=100)
-
-    
-              
+    pspin1.delete(0, END)
+    pspin1.insert(0,podata[43])
+  pspin1.place(x=15,y=100)
 
   ver2 = Label(tentab,text="Header box background color")
   ver2.place(x=15,y=140)
 
   pwin_menu = StringVar()
   pcombo = ttk.Combobox(tentab,textvariable=pwin_menu)
- # pord_win = pwin_menu.get()
+  # pord_win = pwin_menu.get()
   pcombo['values'] = ('Default','Black','Maroon','Green','Olive','Navy','Purple','Teal','Gray','Silver','Red','Lime','Yellow','Blue','Fuchsia','Aqua','White','ScrollBar','Background','ActiveCaption','InactiveCaption','Menu','Window','WindowFrame','MenuText','WindowText','CaptionText','ActiveBorder','InactiveBorder','AppWorkSpace','Highlight','HighlightText','BtnFace','InactiveCaptionText','BtnHighlight','3DDkShadow','3DLight','InfoText','InfoBk','Custom')
   if not podata:
     pcombo.current(0)
@@ -8350,7 +8363,7 @@ def mainpage():
 
   sql = "select * from company"
   fbcursor.execute(sql)
-  podata1 = fbcursor.fetchone()
+  podata = fbcursor.fetchone()
 
     
   frame = Frame(tentab, width=953, height=300)
@@ -8576,6 +8589,10 @@ def mainpage():
   canvas.create_text(720, 670, text="Page 1 of 1", fill="black", font=('Helvetica 10')) 
 
   def refresh():
+    sql = "select * from company"
+    fbcursor.execute(sql)
+    podata1 = fbcursor.fetchone()
+
     frame = Frame(tentab, width=953, height=300)
     frame.pack(expand=True, fill=BOTH)
     frame.place(x=247,y=90)
@@ -8591,7 +8608,7 @@ def mainpage():
     canvas.create_rectangle(100, 8, 850, 687 , outline='yellow',fill='white')
     canvas.create_text(500, 25, text="Title text goes here...", fill="black", font=('Helvetica 10'))
     try:
-      pord_image = Image.open("images/"+podata[13])
+      pord_image = Image.open("images/"+podata1[13])
       pord_resize_image = pord_image.resize((200,100))
       pord_image = ImageTk.PhotoImage(pord_resize_image)
 
@@ -8614,7 +8631,7 @@ def mainpage():
             # canvas.create_text(700, 200, text=""+caddent.get('1.0', 'end-1c'), fill="black", font=('Helvetica 10'), width=125)
     PT_address = Text(canvas, height=5, width=40, font=('Helvetica 10'),borderwidth=0)
     PT_address.tag_configure('tag_name',justify='right')
-    PT_address.insert('1.0', podata[2])
+    PT_address.insert('1.0', podata1[2])
     PT_address.tag_add('tag_name','1.0', 'end')
     PT_address_window = canvas.create_window(520, 80, anchor="nw", window=PT_address)
     canvas.create_text(695, 180, text=" "+comsalestax.get(), fill="black", font=('Helvetica 10'))

@@ -6,10 +6,10 @@ import webbrowser as wb
 # from ttkthemes import ThemedTk
 #import tkFont
 #creating window
-main_application = ThemedTk(theme = "radiance")
-main_application.geometry("1200x800")
+main_application = tk.Tk()
+main_application.geometry("130x390")
 main_application.title("Argon Text Editor")
-main_application.wm_iconbitmap("Ar.ico")
+# main_application.wm_iconbitmap("Ar.ico")
 
 '''Main menu'''
 #menu
@@ -19,11 +19,11 @@ main_menu = tk.Menu()       #main menu that holds other menu
 ############# FILE MENU ########################
 file = tk.Menu(main_menu, tearoff = False)   #file menu
 #icons image files
-new_icon = tk.PhotoImage(file = "icons/new.png")
-open_icon = tk.PhotoImage(file = "icons/open.png")
-exit_icon = tk.PhotoImage(file = "icons/exit.png")
-save_icon = tk.PhotoImage(file = "icons/save.png")
-save_as_icon = tk.PhotoImage(file = "icons/save_as.png")
+new_icon = tk.PhotoImage(file = "images/import.png")
+open_icon = tk.PhotoImage(file = "images/refresh.png")
+exit_icon = tk.PhotoImage(file = "images/edit.png")
+save_icon = tk.PhotoImage(file = "images/save.png")
+save_as_icon = tk.PhotoImage(file = "images/save.png")
 
 
 
@@ -31,48 +31,48 @@ save_as_icon = tk.PhotoImage(file = "icons/save_as.png")
 
 edit = tk.Menu(main_menu, tearoff = False)   #edit menu
 #icons
-copy_icon = tk.PhotoImage(file = "icons/copy.png")
-cut_icon = tk.PhotoImage(file = "icons/cut.png")
-paste_icon = tk.PhotoImage(file = "icons/paste.png")
-clear_all_icon = tk.PhotoImage(file = "icons/clear_all.png")
-find_icon = tk.PhotoImage(file = "icons/find.png")
-undo_icon = tk.PhotoImage(file = "icons/undo.png")
-redo_icon = tk.PhotoImage(file = "icons/redo.png")
+copy_icon = tk.PhotoImage(file = "images/copy.png")
+cut_icon = tk.PhotoImage(file = "images/cut.png")
+paste_icon = tk.PhotoImage(file = "images/paste.png")
+clear_all_icon = tk.PhotoImage(file = "images/delete.png")
+find_icon = tk.PhotoImage(file = "images/search.png")
+undo_icon = tk.PhotoImage(file = "images/undo.png")
+redo_icon = tk.PhotoImage(file = "images/redo.png")
 
 
 ##### VIEW #####
 view = tk.Menu(main_menu,tearoff = False)   #view
 #view icons
-tool_bar_icon = tk.PhotoImage(file = "icons/tool_bar.png")
-status_bar_icon = tk.PhotoImage(file = "icons/status_bar.png")
+# tool_bar_icon = tk.PhotoImage(file = "icons/tool_bar.png")
+# status_bar_icon = tk.PhotoImage(file = "icons/status_bar.png")
 
 
 
 ###### VIEW ENDS ########
 
 ###### COLOR THEME #########
-color_theme = tk.Menu(main_menu,tearoff = False)    #color menu
-#theme icons/images
-light_default_icon = tk.PhotoImage(file = "icons/light_default.png")
-light_plus_icon = tk.PhotoImage(file = "icons/light_plus.png")
-dark_icon = tk.PhotoImage(file = "icons/dark.png")
-night_blue_icon = tk.PhotoImage(file = "icons/night_blue.png")
-red_icon = tk.PhotoImage(file = "icons/red.png")
-monokai_icon = tk.PhotoImage(file = "icons/monokai.png")
+# color_theme = tk.Menu(main_menu,tearoff = False)    #color menu
+# #theme icons/images
+# light_default_icon = tk.PhotoImage(file = "icons/light_default.png")
+# light_plus_icon = tk.PhotoImage(file = "icons/light_plus.png")
+# dark_icon = tk.PhotoImage(file = "icons/dark.png")
+# night_blue_icon = tk.PhotoImage(file = "icons/night_blue.png")
+# red_icon = tk.PhotoImage(file = "icons/red.png")
+# monokai_icon = tk.PhotoImage(file = "icons/monokai.png")
 #ends here
 
-theme_choice = tk.StringVar()
-color_icons = (light_default_icon,light_default_icon,dark_icon,night_blue_icon,red_icon,monokai_icon)
+# theme_choice = tk.StringVar()
+# color_icons = (light_default_icon,light_default_icon,dark_icon,night_blue_icon,red_icon,monokai_icon)
 
-color_dict = {                              
-    "Light Default" : ("#000000","#ffffff"),            ## (textcolor,background color)
-    "Light Plus" : ("#474747","#e0e0e0"),
-    "Dark" : ("#c4c4c4","#2d2d2d"),
-    "Red" : ("#2d2d2d","#ffe8e8"),
-    "Monokai" : ("#d3b774","#474747"),
-    "Night Blue" : ("#ededed","#6b9dc2")
+# color_dict = {                              
+#     "Light Default" : ("#000000","#ffffff"),            ## (textcolor,background color)
+#     "Light Plus" : ("#474747","#e0e0e0"),
+#     "Dark" : ("#c4c4c4","#2d2d2d"),
+#     "Red" : ("#2d2d2d","#ffe8e8"),
+#     "Monokai" : ("#d3b774","#474747"),
+#     "Night Blue" : ("#ededed","#6b9dc2")
 
-}
+# }
 #about menu
 def about():
     new_window = tk.Toplevel()
@@ -110,10 +110,10 @@ font_size_box.grid(row = 0, column = 1,padx = 5)
 
 
 #buttons icons
-bold_icon = tk.PhotoImage(file = "icons/bold.png")
-italic_icon = tk.PhotoImage(file = "icons/italic.png")
-underline_icon = tk.PhotoImage(file = "icons/underline.png")
-font_color_icon = tk.PhotoImage(file = "icons/font_color.png")
+bold_icon = tk.PhotoImage(file = "images/bold.png")
+italic_icon = tk.PhotoImage(file = "images/italics.png")
+underline_icon = tk.PhotoImage(file = "images/underline.png")
+font_color_icon = tk.PhotoImage(file = "images/font_color.png")
 #buttons icons ends here
 
 #creating buttons
@@ -139,9 +139,9 @@ font_color_btn.grid(row = 0,column = 5,padx = 5)
 #ends
 
 #text align items icons
-align_left_image = tk.PhotoImage(file = "icons/align_left.png")
-align_center_image = tk.PhotoImage(file = "icons/align_center.png")
-align_right_image = tk.PhotoImage(file = "icons/align_right.png")
+align_left_image = tk.PhotoImage(file = "images/left.png")
+align_center_image = tk.PhotoImage(file = "images/center.png")
+align_right_image = tk.PhotoImage(file = "images/right.png")
 #ends here
 
 #align icons
@@ -159,13 +159,13 @@ align_right_btn.grid(row = 0,column = 8,padx = 5)
 
 ###toolbar
 ################## Text Editor ########
-text_editor = tk.Text(main_application,undo = True)
+text_editor = tk.Text(main_application,undo = True,width=120)
 text_editor.config(wrap = 'word',relief = tk.FLAT)
 
 scroll_bar = tk.Scrollbar(main_application)
 scroll_bar.pack(side = tk.RIGHT,fill = tk.Y)
 text_editor.focus_set()
-text_editor.pack(fill = tk.BOTH,expand = True)
+text_editor.pack(padx=5,pady=50,expand = True,fill=tk.Y)
 scroll_bar.config(command = text_editor.yview)
 text_editor.config(yscrollcommand = scroll_bar.set)
 
@@ -303,7 +303,7 @@ text_editor.bind("<<Modified>>",changed)
 main_menu.add_cascade(label = "File",menu = file)
 main_menu.add_cascade(label = "Edit",menu = edit)
 main_menu.add_cascade(label = "View",menu = view)
-main_menu.add_cascade(label = "Theme",menu = color_theme)
+# main_menu.add_cascade(label = "Theme",menu = color_theme)
 main_menu.add_cascade(label = "Help",menu = help_user)
 
 
@@ -510,8 +510,8 @@ def hide_statusbar():
 ################### EDIT ENDS ##########
 
 #checkbutton for selecting
-view.add_checkbutton(label='Tool Bar',onvalue=True, offvalue=0,variable = show_toolbar, image=tool_bar_icon, compound=tk.LEFT, command=hide_toolbar)
-view.add_checkbutton(label='Status Bar',onvalue=1, offvalue=False,variable = show_statusbar, image=status_bar_icon, compound=tk.LEFT, command=hide_statusbar)
+view.add_checkbutton(label='Tool Bar',onvalue=True, offvalue=0,variable = show_toolbar, compound=tk.LEFT, command=hide_toolbar)
+view.add_checkbutton(label='Status Bar',onvalue=1, offvalue=False,variable = show_statusbar, compound=tk.LEFT, command=hide_statusbar)
 #checkbutton ends
 
 #color theme
@@ -523,10 +523,10 @@ def change_theme():
     text_editor.config(background=bg_color, fg=fg_color) 
 
 
-count = 0
-for i in color_dict:
-    color_theme.add_radiobutton(label = i, image =color_icons[count], variable = theme_choice,compound = tk.LEFT,command = change_theme)
-    count += 1
+# count = 0
+# for i in color_dict:
+#     color_theme.add_radiobutton(label = i, image =color_icons[count], variable = theme_choice,compound = tk.LEFT,command = change_theme)
+#     count += 1
 
 main_application.config(menu = main_menu)
 
