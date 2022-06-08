@@ -10546,18 +10546,27 @@ def mainpage():
   mess_Notebook.add(emailmessage_Frame, text="E-mail message")
   mess_Notebook.place(x=5, y=50)
 
-
- 
   meframe = StringVar()
-  memaiframe=ScrolledText(emailmessage_Frame, width=130, bg="white",undo=True,height=400)
+  memaiframe=Text(emailmessage_Frame,font=('arial 17'),undo=True,width=130,height=400)
   if not emdata:
     pass
   else:
     memaiframe.insert('1.0', emdata[53])
-  memaiframe.place(y=28,x=9)
+  memaiframe.pack(padx=0,pady=28,expand=False)
 
-  scrollbar = Scrollbar(eighttab)
-  scrollbar.place(x=1048, y=120, height=396)
+
+  scrollbar1 = Scrollbar(emailmessage_Frame,orient=VERTICAL)
+  scrollbar2= Scrollbar(memaiframe,orient=HORIZONTAL,command=memaiframe.xview)
+  scrollbar2.pack(fill=X,expand=True,side=BOTTOM,padx=502,pady=390)
+  memaiframe.config(xscrollcommand=scrollbar2.set)
+  memaiframe.config(yscrollcommand=scrollbar1.set)
+  scrollbar1.config(command=memaiframe.yview)
+  scrollbar1.place(x =1047, y=28, height=405)
+  scrollbar2.config(command=memaiframe.xview)
+
+
+ 
+  
 
   btn1=Button(emailmessage_Frame,width=20,height=20,compound = LEFT,image=selectall,command=lambda :memaiframe.event_generate('<Control a>'))
   btn1.place(x=5, y=1)
@@ -10611,7 +10620,7 @@ def mainpage():
 
   size_variable=IntVar()
   compo = ttk.Combobox(emailmessage_Frame, width=14,textvariable=size_variable,values=tuple(range(10,80)))
-  compo['values'] =('11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','20','30','31','32','33','34','35')
+  compo['values'] =('11','12','13','14','15','16','17')
   compo.place(x=600, y=5)
   compo.current(4)
 
@@ -11037,10 +11046,10 @@ def mainpage():
     btlogo.place(x=505,y=120)
     
   try:
-    image = Image.open("images/"+ninetab[19])
+    image = Image.open("images/"+padata[19])
     resize_image = image.resize((280, 160))
     image = ImageTk.PhotoImage(resize_image)
-    btlogoi = Button(ninetab,width=280,height=160,image="image")
+    btlogoi = Button(ninetab,width=280,height=160,image=image)
     btlogoi.place(x=505,y=120)
     btlogoi.photo = image
   except:
@@ -11081,10 +11090,10 @@ def mainpage():
     btlogo.place(x=506,y=390)
 
   try:
-    image = Image.open("images/"+ninetab[18])
+    image = Image.open("images/"+padata[18])
     resize_image = image.resize((280, 55))
     image = ImageTk.PhotoImage(resize_image)
-    bt_logo = Button(ninetab,width=280,height=55,image="image")
+    bt_logo = Button(ninetab,width=280,height=55,image=image)
     bt_logo.place(x=506,y=390)
     bt_logo.photo = image
   except:

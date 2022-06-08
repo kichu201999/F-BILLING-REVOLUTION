@@ -7544,55 +7544,35 @@ def mainpage():
     
   style = ttk.Style()
   style.theme_use('default')
-  style.configure('TNotebook.Tab', background="#999999", width=78, padding=10)
+  style.configure('TNotebook.Tab', background="#999999", width=130,height=400)
   mess_Notebook = ttk.Notebook(eighttab)
-  emailmessage_Frame = Frame(mess_Notebook, height=200, width=1060)
-  # htmlsourse_Frame = Frame(mess_Notebook, height=430, width=1060)
+  emailmessage_Frame = Frame(mess_Notebook,)
   mess_Notebook.add(emailmessage_Frame, text="E-mail message")
-  # mess_Notebook.add(htmlsourse_Frame)
   mess_Notebook.place(x=5, y=50)
 
-  # meframe = StringVar()
-  # memaiframe=ScrolledText(emailmessage_Frame, width=130, bg="white",undo=True,height=400)
-  # if not emdata:
-  #   pass
-  # else:
-  #   memaiframe.insert('1.0', emdata[53])
-  # memaiframe.place(y=28,x=9)
+  meframe = StringVar()
+  memaiframe=Text(emailmessage_Frame,font=('arial 17'),undo=True,width=130,height=400)
+  if not emdata:
+    pass
+  else:
+    memaiframe.insert('1.0', emdata[53])
+  memaiframe.pack(padx=0,pady=28,expand=False)
 
-  # scrollbar = Scrollbar(eighttab)
-  # scrollbar.place(x=1048, y=120, height=396)
- 
-  # meframe = StringVar()
-  # memaiframe=ScrolledText(emailmessage_Frame, width=130, bg="white",undo=True,height=400)
-  # if not emdata:
-  #   pass
-  # else:
-  #   memaiframe.insert('1.0', emdata[53])
-  # memaiframe.place(y=28,x=9)
-  # memaiframe.grid(row=2,column=1)
 
-  # tool_bar = Label(emailmessage_Frame,width=1060)
-  # tool_bar.pack(pady=5,padx=9)
-
-  # memaiframe.grid(row=1, column=1, padx=5, pady=5,sticky='nsew')
-
-  # if  not emdata:
-  #   pass
-  # else:
-  #   print(emdata)
-  #   memaiframe.insert(0, emdata[3])
   scrollbar1 = Scrollbar(eighttab,orient=VERTICAL)
-  scrollbar2= Scrollbar(eighttab,orient=HORIZONTAL)
+  scrollbar2= Scrollbar(memaiframe,orient=HORIZONTAL,command=memaiframe.xview)
+  scrollbar2.pack(fill=X,expand=True,side=BOTTOM,padx=490,pady=390)
+  memaiframe.config(xscrollcommand=scrollbar2.set)
+  memaiframe.config(yscrollcommand=scrollbar1.set)
+  scrollbar1.config(command=memaiframe.yview)
+  scrollbar1.place(x =1040, y=120, height=400)
+  scrollbar2.config(command=memaiframe.xview)
+
+
+
+
  
 
-  memaiframe=Text(emailmessage_Frame,  yscrollcommand=scrollbar1.set, xscrollcommand=scrollbar2.set,font=('arial 17'),undo=True,width=80,height=80)
-  scrollbar1.config(command=memaiframe.yview)
-  scrollbar1.place(x =1040, y=120, height=396)
-  scrollbar2.config(command=memaiframe.xview)
-  scrollbar2.place(x=9,y=510, width=1050)
-
-  memaiframe.pack(padx=0,pady=28,expand=True, fill=BOTH)
 
 
 
@@ -7651,7 +7631,7 @@ def mainpage():
 
   size_variable=IntVar()
   compo = ttk.Combobox(emailmessage_Frame, width=14,textvariable=size_variable,values=tuple(range(10,80)))
-  compo['values'] =('10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','50')
+  compo['values'] =('10','11','12','13','14','15','16','17')
   compo.place(x=600, y=5)
   compo.current(4)
 
@@ -7660,11 +7640,11 @@ def mainpage():
 
   font_families=font.families()
   font_family__variable=StringVar()
-  combo =ttk.Combobox(emailmessage_Frame, width=18,textvariable=font_family__variable,values=font_families)
-  combo.place(x=720, y=5)
-  combo.current(font_families.index('Arial'))
+  # combo =ttk.Combobox(emailmessage_Frame, width=18,textvariable=font_family__variable,values=font_families)
+  # combo.place(x=720, y=5)
+  # combo.current(font_families.index('Arial'))
 
-  combo.bind('<<ComboboxSelected>>',font_style)
+  # combo.bind('<<ComboboxSelected>>',font_style)
 
 
   # font_tuple = tk.font.families()             #contains all font families names
